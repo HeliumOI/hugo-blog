@@ -1,0 +1,141 @@
+baseurl: https://example.com
+languageCode: zh-cn
+theme: hugo-theme-stack
+paginate: 7
+title: Sophonの博客
+
+# Change it to your Disqus shortname before using
+disqusShortname: sophon-blog
+
+# Theme i18n support
+# Available values: en, fr, id, ja, ko, pt-br, zh-cn
+DefaultContentLanguage: zh-cn
+
+permalinks:
+    post: /post/:slug/
+    page: /:slug/
+
+params:
+    mainSections:
+        - post
+    featuredImageField: image
+    rssFullContent: true
+    favicon: img/avatar.jpg
+
+    footer:
+        since: 2020
+        customText:
+
+    dateFormat:
+        published: Jan 02, 2006
+        lastUpdated: Jan 02, 2006 15:04 MST
+
+    sidebar:
+        emoji: 🦊 #🍥
+        subtitle: 面对我们的骨灰，高尚的人们将洒下热泪
+        avatar:
+            local: true
+            src: img/avatar.jpg
+
+    article:
+        math: true
+        license:
+            enabled: true
+            default: Licensed under CC BY-NC-SA 4.0
+
+    comments:
+        enabled: true
+        provider: disqus
+        utterances:
+            repo:
+            issueTerm: pathname
+            label:
+            theme: preferred-color-scheme
+
+    widgets:
+        enabled:
+            - search
+            - archives
+            - tag-cloud
+
+        archives:
+            limit: 5
+
+        tagCloud:
+            limit: 10
+
+    opengraph:
+        twitter:
+            # Your Twitter username
+            site:
+
+            # Available values: summary, summary_large_image
+            card: summary_large_image
+
+    defaultImage:
+        opengraph:
+            enabled: false
+            local: false
+            src:
+
+    colorScheme:
+        # Display toggle
+        toggle: true
+
+        # Available values: auto, light, dark
+        default: auto
+
+    imageProcessing:
+        cover:
+            enabled: true
+        content:
+            enabled: true
+
+menu:
+    main:
+        - identifier: home
+          name: 主页
+          url: /
+          weight: -100
+          pre: home
+
+        - identifier: about
+          name: 关于
+          url: about
+          weight: -90
+          pre: user
+
+        - identifier: archives
+          name: 归档
+          url: archives
+          weight: -70
+          pre: archives
+        
+        - identifier: tags
+          name: 标签
+          url: tags
+          weight: -60
+          pre: tag
+
+        - identifier: search
+          name: 搜索
+          url: search
+          weight: -50
+          pre: search
+
+related:
+    includeNewer: true
+    threshold: 60
+    toLower: false
+    indices:
+        - name: tags
+          weight: 100
+
+        - name: categories
+          weight: 200
+
+markup:
+    highlight:
+        noClasses: false
+
+publishDir: docs

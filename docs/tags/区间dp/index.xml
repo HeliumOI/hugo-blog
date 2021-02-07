@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>区间DP on Sophonの博客</title>
+    <link>https://example.com/tags/%E5%8C%BA%E9%97%B4dp/</link>
+    <description>Recent content in 区间DP on Sophonの博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 29 Jul 2019 11:42:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/%E5%8C%BA%E9%97%B4dp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>题解 SP196 【MUSKET - Musketeers】</title>
+      <link>https://example.com/post/%E9%A2%98%E8%A7%A3-sp196-musket-musketeers/</link>
+      <pubDate>Mon, 29 Jul 2019 11:42:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/%E9%A2%98%E8%A7%A3-sp196-musket-musketeers/</guid>
+      <description>在模拟赛中遇到了这道题。（后来才知道是SPOJ上的原题）
+话不多说，开始动态规划三步走。$Let&amp;rsquo;s\ go!$
+定义状态 假设第1个人能够赢得整场决斗：
+倘若把这位仁兄复制一份，放在$n + 1$的；那么，在一阵厮杀后，他和自己的分身应当能够相遇。那么，我们就和 在[NOI1995]石子合并中一样，将数组翻倍后再处理。
+显而易见定义状态如下：
+$dp_{i,j}$为第$i$人与第$j$人是否能够相遇
+状态转移方程 现在思考一下：第$i$人与第$j$人是否能够相遇？
+按照区间DP的思维，我们在$i$与$j$之间选取一个人$k$
+若$i$与$k$能相遇，$k$与$j$能相遇，且$i$与$j$当中的任何一个人能干掉$k$
+故状态转移方程为：
+$$dp_{i,j} = dp_{i,k} &amp;amp;&amp;amp;\ dp_{k,j} &amp;amp;&amp;amp;\ (w_{i,k} || w_{j,k})$$
+边界条件 显然， 若两人本来就相邻，则$dp_{i,j} = 1$
+代码 #include&amp;lt;iostream&amp;gt;#include&amp;lt;cstring&amp;gt;using namespace std; const int MAXN = 100 * 2 + 5; int w[MAXN][MAXN], f[MAXN][MAXN]; int n; int main() { int t; cin &amp;gt;&amp;gt; t; while(t--) { memset(f, 0, sizeof(f)); //数组清零，我在这里掉了两次坑  memset(w, 0, sizeof(w)); cin &amp;gt;&amp;gt; n; for(int i = 1; i &amp;lt;= n; i++) { for(int j = 1; j &amp;lt;= n; j++) { char c; cin &amp;gt;&amp;gt; c; w[i][j] = c - &amp;#39;0&amp;#39;; w[i + n][j + n] = w[i + n][j] = w[i][j + n] = w[i][j]; } } for(int l = 1; l &amp;lt;= n + 1; l++) { for(int i = 1; i + l - 1 &amp;lt;= n * 2; i++) { int j = i + l - 1; if(l &amp;lt;= 2) { f[i][j] = 1; //边界条件  continue; } for(int k = i; k &amp;lt;= j; k++) { if(f[i][k] &amp;amp;&amp;amp; f[k][j] &amp;amp;&amp;amp; (w[i][k] || w[j][k])) { f[i][j] = 1; break; } } } } int ans = 0; for(int i = 1; i &amp;lt;= n; i++) { if(f[i][i + n]) { ans++; } } cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; endl; for(int i = 1; i &amp;lt;= n; i++) { if(f[i][i + n]) { cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; endl; } } } return 0; } </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本文同步发布于 Heliumの博客，到我的博客阅读体验更佳QwQ
+DNS是什么 DNS（Domain Name System）是一项网络服务，用途是对全球各个网站的域名进行解析。如果听不懂上面这句话也没关系，接下来会讲解。如果你是网络方面的大牛可以直接跳过或关闭此网页。
+简明易懂的DNS 举个例子，从前有个叫小明的人（目测此人已累死），开了一家商店。一开始顾客要去购物时,就直接去商店里买。
+但由于网络环境的复杂性，让顾客直接记住地址是不太可能的。（你试试看？）于是就有人动了脑筋，推出了一样类似DNS的服务：你只需要说出地点（小明杂货店），服务商就会开车送你去目的地。
+很多大公司实际上都推出了这份服务，例如阿里，百度，谷歌，Cloudflare等。
+实际网络中的DNS，则是向服务器询问域名，而服务器返回IP地址。
+顺便推荐几个质量好的良心DNS如下：
+Cloudflare DNS: 1.1.1.1, 1.0.0.1
+Google Public DNS: 8.8.8.8, 8.8.4.4
+OpenDNS 208.67.222.222, 208.67.220.220
+DNS查询 看到这里你可能有疑惑了，难道每一台DNS服务器都储存了很多IP地址和域名的对应吗？不是。一这很浪费空间，二这样很难更新。
+以我的博客地址keepthethink.github.io为例，当你输入地址后：
+1.你的电脑首先会去询问DNS服务器；
+这个“DNS服务器”可能在任何地方，可能就在你家的路由器上，也有可能在万里之遥的灯塔国QwQ（如果你是非酋
+当然，一般来讲你的路由器上不会真的有一个DNS服务端，如果你在本地登录912.168.0.1或192.168.1.1，你就会看到在“DNS”设置那一栏会有你的ISP的DNS地址（当然，如果你想把它换成公共DNS也可以，但要为你自己的网速负责。）
+2.DNS服务器询问所谓“根服务器”；
+根服务器询问.io域名的权威服务器；
+.io域名的权威服务器询问.github.io域名的权威服务器;
+.github.io域名的权威服务器将IP告知你的电脑；
+OK
+（这套措施实在是找不到合适的比喻，看不懂就跳过吧。）
+注意事项 如果你访问的是一些比较国际化的网站，而且还使用了国外的DNS服务器，有可能会会给你分配个国外的IP地址。
+举个最基础的例子：Hexo博客在注册网址时，进行的国内外分流。这是不排除某些睿智国外DNS不管三七二十一给你个国外地址的情形。
+DNS缓存 这么干，空间的确节省了很多，但效率显然就更慢了。所以，DNS服务器中一般有个“缓存”，当你重复询问同一个网址时，直接找出缓存记录并答复。当然，每个一定的时间会更新缓存。
+既然这套措施已经很完美了，那DoH是干嘛的？别急，马上就讲。
+DNS劫持与HTTP劫持 DNS劫持：当DNS不那么老实 打个比方：
+从前有个叫小刚的，他也开了家杂货店；
+小刚发现小明的杂货店有很多客户，分外眼红，便拿钱贿赂了DNS服务商，于是，当顾客要求DNS服务商将其带到“小明杂货店”是，DNS会不管三七二十一将其带到“小刚杂货店”。在网络中，则是DNS服务器故意给出错误的IP地址。
+这显然是无计可施的，一般来说，遇到这种人品烂的掉渣的服务商，最好的办法就是换一家，好在这年头网络条件不错，大多数DNS都不搞这种事。
+但是，对于DNS劫持，刚才讲的一种情况并非最常见的，最常见的事下面这种：
+假设只有服务商A收了贿赂，而服务商B没有。当你向DNS服务商B打电话时，你的电话服务商将其转接到服务商A，那你就前功尽弃了。唯一的方法是使用DNS-over-HTTPS，后面会讲解。
+HTTP劫持：当ISP不那么老实 假设你向DNS服务器打了个电话，“我要去小明杂货店。”结果你的电话服务商窃听了这句话，得知了你的行程；甚至将其修改为“我要去小刚杂货店。”，然后你就不明不白的被带到了另一个地方。
+在这种情况下，你的DNS服务商是老实可靠的，但你的ISP（网络服务提供商）则不那么可靠。当然，一般的ISP并没有那么猖狂，他们最多不过是往你身上塞几张奇♂怪♂的广♂告♂（想必大家都有这样的经历。）你有时候会不会发现你看到的广告就是最近曾经关注过的事物？
+你也许会说，可以修改DNS来解决这个问题，但如果你的ISP让 Google Public DNS 跳转到 ... 之类与其同流合污的DNS地址怎没办？图样图森破。
+注意
+有哪些进行HTTP劫持的ISP？基本上都有：移动，联通，电信，天下乌鸦一般黑，呵呵。 一个极其明显的例子如下：
+这种劫持的关键在于，DNS服务器与你之间的链接为“明文传输”，而非“加密传输”。这就导致每一个环节上的人都能随意修改你的链接。幸运的是，在生产力高度发达的9102年，加密技术早已像烂柿子一样成熟了，如HTTPS。
+DoH的具体原理 DoH的具体原理其实就是在DNS外面套一层HTTPS。（而且更慢了）即流程变成了
+ 你的电脑 -&amp;gt; DoH服务器 -&amp;gt; DNS服务器 -&amp;gt; DoH服务器 -&amp;gt; 你的电脑'><title>DNS-over-HTTPS(DoH)简析与配置</title>
+
+<link rel='canonical' href='https://example.com/post/dns-over-httpsdoh%E7%AE%80%E6%9E%90%E4%B8%8E%E9%85%8D%E7%BD%AE/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='DNS-over-HTTPS(DoH)简析与配置'>
+<meta property='og:description' content='本文同步发布于 Heliumの博客，到我的博客阅读体验更佳QwQ
+DNS是什么 DNS（Domain Name System）是一项网络服务，用途是对全球各个网站的域名进行解析。如果听不懂上面这句话也没关系，接下来会讲解。如果你是网络方面的大牛可以直接跳过或关闭此网页。
+简明易懂的DNS 举个例子，从前有个叫小明的人（目测此人已累死），开了一家商店。一开始顾客要去购物时,就直接去商店里买。
+但由于网络环境的复杂性，让顾客直接记住地址是不太可能的。（你试试看？）于是就有人动了脑筋，推出了一样类似DNS的服务：你只需要说出地点（小明杂货店），服务商就会开车送你去目的地。
+很多大公司实际上都推出了这份服务，例如阿里，百度，谷歌，Cloudflare等。
+实际网络中的DNS，则是向服务器询问域名，而服务器返回IP地址。
+顺便推荐几个质量好的良心DNS如下：
+Cloudflare DNS: 1.1.1.1, 1.0.0.1
+Google Public DNS: 8.8.8.8, 8.8.4.4
+OpenDNS 208.67.222.222, 208.67.220.220
+DNS查询 看到这里你可能有疑惑了，难道每一台DNS服务器都储存了很多IP地址和域名的对应吗？不是。一这很浪费空间，二这样很难更新。
+以我的博客地址keepthethink.github.io为例，当你输入地址后：
+1.你的电脑首先会去询问DNS服务器；
+这个“DNS服务器”可能在任何地方，可能就在你家的路由器上，也有可能在万里之遥的灯塔国QwQ（如果你是非酋
+当然，一般来讲你的路由器上不会真的有一个DNS服务端，如果你在本地登录912.168.0.1或192.168.1.1，你就会看到在“DNS”设置那一栏会有你的ISP的DNS地址（当然，如果你想把它换成公共DNS也可以，但要为你自己的网速负责。）
+2.DNS服务器询问所谓“根服务器”；
+根服务器询问.io域名的权威服务器；
+.io域名的权威服务器询问.github.io域名的权威服务器;
+.github.io域名的权威服务器将IP告知你的电脑；
+OK
+（这套措施实在是找不到合适的比喻，看不懂就跳过吧。）
+注意事项 如果你访问的是一些比较国际化的网站，而且还使用了国外的DNS服务器，有可能会会给你分配个国外的IP地址。
+举个最基础的例子：Hexo博客在注册网址时，进行的国内外分流。这是不排除某些睿智国外DNS不管三七二十一给你个国外地址的情形。
+DNS缓存 这么干，空间的确节省了很多，但效率显然就更慢了。所以，DNS服务器中一般有个“缓存”，当你重复询问同一个网址时，直接找出缓存记录并答复。当然，每个一定的时间会更新缓存。
+既然这套措施已经很完美了，那DoH是干嘛的？别急，马上就讲。
+DNS劫持与HTTP劫持 DNS劫持：当DNS不那么老实 打个比方：
+从前有个叫小刚的，他也开了家杂货店；
+小刚发现小明的杂货店有很多客户，分外眼红，便拿钱贿赂了DNS服务商，于是，当顾客要求DNS服务商将其带到“小明杂货店”是，DNS会不管三七二十一将其带到“小刚杂货店”。在网络中，则是DNS服务器故意给出错误的IP地址。
+这显然是无计可施的，一般来说，遇到这种人品烂的掉渣的服务商，最好的办法就是换一家，好在这年头网络条件不错，大多数DNS都不搞这种事。
+但是，对于DNS劫持，刚才讲的一种情况并非最常见的，最常见的事下面这种：
+假设只有服务商A收了贿赂，而服务商B没有。当你向DNS服务商B打电话时，你的电话服务商将其转接到服务商A，那你就前功尽弃了。唯一的方法是使用DNS-over-HTTPS，后面会讲解。
+HTTP劫持：当ISP不那么老实 假设你向DNS服务器打了个电话，“我要去小明杂货店。”结果你的电话服务商窃听了这句话，得知了你的行程；甚至将其修改为“我要去小刚杂货店。”，然后你就不明不白的被带到了另一个地方。
+在这种情况下，你的DNS服务商是老实可靠的，但你的ISP（网络服务提供商）则不那么可靠。当然，一般的ISP并没有那么猖狂，他们最多不过是往你身上塞几张奇♂怪♂的广♂告♂（想必大家都有这样的经历。）你有时候会不会发现你看到的广告就是最近曾经关注过的事物？
+你也许会说，可以修改DNS来解决这个问题，但如果你的ISP让 Google Public DNS 跳转到 ... 之类与其同流合污的DNS地址怎没办？图样图森破。
+注意
+有哪些进行HTTP劫持的ISP？基本上都有：移动，联通，电信，天下乌鸦一般黑，呵呵。 一个极其明显的例子如下：
+这种劫持的关键在于，DNS服务器与你之间的链接为“明文传输”，而非“加密传输”。这就导致每一个环节上的人都能随意修改你的链接。幸运的是，在生产力高度发达的9102年，加密技术早已像烂柿子一样成熟了，如HTTPS。
+DoH的具体原理 DoH的具体原理其实就是在DNS外面套一层HTTPS。（而且更慢了）即流程变成了
+ 你的电脑 -&amp;gt; DoH服务器 -&amp;gt; DNS服务器 -&amp;gt; DoH服务器 -&amp;gt; 你的电脑'>
+<meta property='og:url' content='https://example.com/post/dns-over-httpsdoh%E7%AE%80%E6%9E%90%E4%B8%8E%E9%85%8D%E7%BD%AE/'>
+<meta property='og:site_name' content='Sophonの博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='网络安全' /><meta property='article:published_time' content='2019-04-15T21:45:00&#43;00:00'/><meta property='article:modified_time' content='2019-04-15T21:45:00&#43;00:00'/>
+<meta name="twitter:title" content="DNS-over-HTTPS(DoH)简析与配置">
+<meta name="twitter:description" content="本文同步发布于 Heliumの博客，到我的博客阅读体验更佳QwQ
+DNS是什么 DNS（Domain Name System）是一项网络服务，用途是对全球各个网站的域名进行解析。如果听不懂上面这句话也没关系，接下来会讲解。如果你是网络方面的大牛可以直接跳过或关闭此网页。
+简明易懂的DNS 举个例子，从前有个叫小明的人（目测此人已累死），开了一家商店。一开始顾客要去购物时,就直接去商店里买。
+但由于网络环境的复杂性，让顾客直接记住地址是不太可能的。（你试试看？）于是就有人动了脑筋，推出了一样类似DNS的服务：你只需要说出地点（小明杂货店），服务商就会开车送你去目的地。
+很多大公司实际上都推出了这份服务，例如阿里，百度，谷歌，Cloudflare等。
+实际网络中的DNS，则是向服务器询问域名，而服务器返回IP地址。
+顺便推荐几个质量好的良心DNS如下：
+Cloudflare DNS: 1.1.1.1, 1.0.0.1
+Google Public DNS: 8.8.8.8, 8.8.4.4
+OpenDNS 208.67.222.222, 208.67.220.220
+DNS查询 看到这里你可能有疑惑了，难道每一台DNS服务器都储存了很多IP地址和域名的对应吗？不是。一这很浪费空间，二这样很难更新。
+以我的博客地址keepthethink.github.io为例，当你输入地址后：
+1.你的电脑首先会去询问DNS服务器；
+这个“DNS服务器”可能在任何地方，可能就在你家的路由器上，也有可能在万里之遥的灯塔国QwQ（如果你是非酋
+当然，一般来讲你的路由器上不会真的有一个DNS服务端，如果你在本地登录912.168.0.1或192.168.1.1，你就会看到在“DNS”设置那一栏会有你的ISP的DNS地址（当然，如果你想把它换成公共DNS也可以，但要为你自己的网速负责。）
+2.DNS服务器询问所谓“根服务器”；
+根服务器询问.io域名的权威服务器；
+.io域名的权威服务器询问.github.io域名的权威服务器;
+.github.io域名的权威服务器将IP告知你的电脑；
+OK
+（这套措施实在是找不到合适的比喻，看不懂就跳过吧。）
+注意事项 如果你访问的是一些比较国际化的网站，而且还使用了国外的DNS服务器，有可能会会给你分配个国外的IP地址。
+举个最基础的例子：Hexo博客在注册网址时，进行的国内外分流。这是不排除某些睿智国外DNS不管三七二十一给你个国外地址的情形。
+DNS缓存 这么干，空间的确节省了很多，但效率显然就更慢了。所以，DNS服务器中一般有个“缓存”，当你重复询问同一个网址时，直接找出缓存记录并答复。当然，每个一定的时间会更新缓存。
+既然这套措施已经很完美了，那DoH是干嘛的？别急，马上就讲。
+DNS劫持与HTTP劫持 DNS劫持：当DNS不那么老实 打个比方：
+从前有个叫小刚的，他也开了家杂货店；
+小刚发现小明的杂货店有很多客户，分外眼红，便拿钱贿赂了DNS服务商，于是，当顾客要求DNS服务商将其带到“小明杂货店”是，DNS会不管三七二十一将其带到“小刚杂货店”。在网络中，则是DNS服务器故意给出错误的IP地址。
+这显然是无计可施的，一般来说，遇到这种人品烂的掉渣的服务商，最好的办法就是换一家，好在这年头网络条件不错，大多数DNS都不搞这种事。
+但是，对于DNS劫持，刚才讲的一种情况并非最常见的，最常见的事下面这种：
+假设只有服务商A收了贿赂，而服务商B没有。当你向DNS服务商B打电话时，你的电话服务商将其转接到服务商A，那你就前功尽弃了。唯一的方法是使用DNS-over-HTTPS，后面会讲解。
+HTTP劫持：当ISP不那么老实 假设你向DNS服务器打了个电话，“我要去小明杂货店。”结果你的电话服务商窃听了这句话，得知了你的行程；甚至将其修改为“我要去小刚杂货店。”，然后你就不明不白的被带到了另一个地方。
+在这种情况下，你的DNS服务商是老实可靠的，但你的ISP（网络服务提供商）则不那么可靠。当然，一般的ISP并没有那么猖狂，他们最多不过是往你身上塞几张奇♂怪♂的广♂告♂（想必大家都有这样的经历。）你有时候会不会发现你看到的广告就是最近曾经关注过的事物？
+你也许会说，可以修改DNS来解决这个问题，但如果你的ISP让 Google Public DNS 跳转到 ... 之类与其同流合污的DNS地址怎没办？图样图森破。
+注意
+有哪些进行HTTP劫持的ISP？基本上都有：移动，联通，电信，天下乌鸦一般黑，呵呵。 一个极其明显的例子如下：
+这种劫持的关键在于，DNS服务器与你之间的链接为“明文传输”，而非“加密传输”。这就导致每一个环节上的人都能随意修改你的链接。幸运的是，在生产力高度发达的9102年，加密技术早已像烂柿子一样成熟了，如HTTPS。
+DoH的具体原理 DoH的具体原理其实就是在DNS外面套一层HTTPS。（而且更慢了）即流程变成了
+ 你的电脑 -&amp;gt; DoH服务器 -&amp;gt; DNS服务器 -&amp;gt; DoH服务器 -&amp;gt; 你的电脑">
+    <link rel="shortcut icon" href="img/avatar.jpg" />
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu5d98ca782c8bcb789c89210a0f8e3e46_129611_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🦊</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://example.com">Sophonの博客</a></h1>
+        <h2 class="site-description">面对我们的骨灰，高尚的人们将洒下热泪</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/tags'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>暗色模式</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://example.com" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E7%BD%91%E7%BB%9C/" >
+                网络
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/dns-over-httpsdoh%E7%AE%80%E6%9E%90%E4%B8%8E%E9%85%8D%E7%BD%AE/">DNS-over-HTTPS(DoH)简析与配置</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Apr 15, 2019</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <p>本文同步发布于 <a class="link" href="https://keepthethink.github.io/archives/2251452003/"  target="_blank" rel="noopener"
+    >Heliumの博客</a>，到我的博客阅读体验更佳QwQ</p>
+<h1 id="dns是什么">DNS是什么</h1>
+<p>DNS（Domain Name System）是一项网络服务，用途是对全球各个网站的域名进行解析。如果听不懂上面这句话也没关系，接下来会讲解。如果你是网络方面的大牛可以直接跳过或关闭此网页。</p>
+<h2 id="简明易懂的dns">简明易懂的DNS</h2>
+<p>举个例子，从前有个叫小明的人（目测此人已累死），开了一家商店。一开始顾客要去购物时,就直接去商店里买。</p>
+<p>但由于网络环境的复杂性，让顾客直接记住地址是不太可能的。（你试试看？）于是就有人动了脑筋，推出了一样类似DNS的服务：你只需要说出地点（小明杂货店），服务商就会开车送你去目的地。</p>
+<p>很多大公司实际上都推出了这份服务，例如阿里，百度，谷歌，Cloudflare等。</p>
+<p>实际网络中的DNS，则是向服务器询问域名，而服务器返回IP地址。</p>
+<p>顺便推荐几个质量好的良心DNS如下：</p>
+<h3 id="cloudflare-dns">Cloudflare DNS:</h3>
+<p>1.1.1.1, 1.0.0.1</p>
+<h3 id="google-public-dns">Google Public DNS:</h3>
+<p>8.8.8.8, 8.8.4.4</p>
+<h3 id="opendns">OpenDNS</h3>
+<p>208.67.222.222, 208.67.220.220</p>
+<h2 id="dns查询">DNS查询</h2>
+<p>看到这里你可能有疑惑了，难道每一台DNS服务器都储存了很多IP地址和域名的对应吗？不是。一这很浪费空间，二这样很难更新。</p>
+<p>以我的博客地址<code>keepthethink.github.io</code>为例，当你输入地址后：</p>
+<p>1.你的电脑首先会去询问DNS服务器；</p>
+<p>这个“DNS服务器”可能在任何地方，可能就在你家的路由器上，也有可能在万里之遥的灯塔国QwQ（如果你是非酋</p>
+<p>当然，一般来讲你的路由器上不会真的有一个DNS服务端，如果你在本地登录912.168.0.1或192.168.1.1，你就会看到在“DNS”设置那一栏会有你的ISP的DNS地址（当然，如果你想把它换成公共DNS也可以，但要为你自己的网速负责。）</p>
+<p>2.DNS服务器询问所谓“根服务器”；</p>
+<p>根服务器询问.io域名的权威服务器；</p>
+<p>.io域名的权威服务器询问.github.io域名的权威服务器;</p>
+<p>.github.io域名的权威服务器将IP告知你的电脑；</p>
+<p>OK</p>
+<p>（这套措施实在是找不到合适的比喻，看不懂就跳过吧。）</p>
+<h2 id="注意事项">注意事项</h2>
+<p>如果你访问的是一些比较国际化的网站，而且还使用了国外的DNS服务器，有可能会会给你分配个国外的IP地址。</p>
+<p>举个最基础的例子：Hexo博客在注册网址时，进行的国内外分流。这是不排除某些睿智国外DNS不管三七二十一给你个国外地址的情形。</p>
+<h2 id="dns缓存">DNS缓存</h2>
+<p>这么干，空间的确节省了很多，但效率显然就更慢了。所以，DNS服务器中一般有个“缓存”，当你重复询问同一个网址时，直接找出缓存记录并答复。当然，每个一定的时间会更新缓存。</p>
+<p>既然这套措施已经很完美了，那DoH是干嘛的？别急，马上就讲。</p>
+<h2 id="dns劫持与http劫持">DNS劫持与HTTP劫持</h2>
+<h3 id="dns劫持当dns不那么老实">DNS劫持：当DNS不那么老实</h3>
+<p>打个比方：</p>
+<p>从前有个叫小刚的，他也开了家杂货店；</p>
+<p>小刚发现小明的杂货店有很多客户，分外眼红，便拿钱贿赂了DNS服务商，于是，当顾客要求DNS服务商将其带到“小明杂货店”是，DNS会不管三七二十一将其带到“小刚杂货店”。在网络中，则是DNS服务器故意给出错误的IP地址。</p>
+<p>这显然是无计可施的，一般来说，遇到这种人品烂的掉渣的服务商，最好的办法就是换一家，好在这年头网络条件不错，大多数DNS都不搞这种事。</p>
+<p><strong>但是</strong>，对于DNS劫持，刚才讲的一种情况并非最常见的，最常见的事下面这种：</p>
+<p>假设只有服务商A收了贿赂，而服务商B没有。当你向DNS服务商B打电话时，你的<strong>电话服务商</strong>将其转接到服务商A，那你就前功尽弃了。唯一的方法是使用DNS-over-HTTPS，后面会讲解。</p>
+<h3 id="http劫持当isp不那么老实">HTTP劫持：当ISP不那么老实</h3>
+<p>假设你向DNS服务器打了个电话，“我要去小明杂货店。”结果你的电话服务商窃听了这句话，得知了你的行程；甚至将其修改为“我要去小刚杂货店。”，然后你就不明不白的被带到了另一个地方。</p>
+<p>在这种情况下，你的DNS服务商是老实可靠的，但你的ISP（网络服务提供商）则不那么可靠。当然，一般的ISP并没有那么猖狂，他们最多不过是往你身上塞几张奇♂怪♂的广♂告♂（想必大家都有这样的经历。）你有时候会不会发现你看到的广告就是最近曾经关注过的事物？</p>
+<p>你也许会说，可以修改DNS来解决这个问题，但如果你的ISP让 Google Public DNS 跳转到 <em>.</em>.<em>.</em> 之类与其同流合污的DNS地址怎没办？图样图森破。</p>
+<p><strong>注意</strong></p>
+<p>有哪些进行HTTP劫持的ISP？基本上都有：移动，联通，电信，天下乌鸦一般黑，呵呵。
+一个极其明显的例子如下：</p>
+<p><img src="https://i.loli.net/2019/04/26/5cc2c1cf0d688.jpg" alt="yunyingshangjiechi04.jpg"  /></p>
+<p>这种劫持的关键在于，DNS服务器与你之间的链接为“明文传输”，而非“加密传输”。这就导致每一个环节上的人都能随意修改你的链接。幸运的是，在生产力高度发达的9102年，加密技术早已像烂柿子一样成熟了，如HTTPS。</p>
+<h1 id="doh的具体原理">DoH的具体原理</h1>
+<p>DoH的具体原理其实就是在DNS外面套一层HTTPS。（而且更慢了）即流程变成了</p>
+<blockquote>
+<p>你的电脑 -&gt; DoH服务器 -&gt; DNS服务器 -&gt; DoH服务器 -&gt; 你的电脑</p>
+</blockquote>
+<p>以上流程中的一个箭头代表一个HTTPS加密链接，使得该过程中的所有流量皆受到强加密，这样一来，除非拖出量子计算机或智子，否则绝无可能被破解。</p>
+<p>（当然，如果HTTPS本身出现漏洞，流量自然就会被破解。但这样一来所有与网络有关的事务都会彻底崩溃，不多你一个。）</p>
+<h2 id="提示">提示</h2>
+<ol>
+<li>本人电脑为macOS + Firefox，亲测有效。</li>
+<li>新疆OIer会因为某些原因而无法使用DoH。</li>
+</ol>
+<h2 id="在firefox浏览器中体验doh">在Firefox浏览器中体验DoH</h2>
+<p>首先，把你的Firefox Quantum更新到最新版。（废话）</p>
+<p>点击右侧的“菜单”，就是那个三条横线的图标；</p>
+<p>在菜单里点击“首选项”；</p>
+<p>进入“常规”选项；</p>
+<p><img src="https://keepthethink.github.io/images/Jietu20190416-142149@2x.jpg" alt=""  /></p>
+<p>滚动页面到最下方，选择“网络设置”；</p>
+<p><img src="https://keepthethink.github.io/images/Jietu20190416-142524@2x.jpg" alt=""  /></p>
+<p>在弹出窗口的最下方选择“启用基于HTTPS的DNS”，点击“使用默认值”即可。</p>
+<h2 id="在google-chrome中体验doh">在Google Chrome中体验DoH</h2>
+<p>遗憾的是，直到这篇科普写完时，Chrome仍然不支持直接配置DoH。如果你希望使用Chrome，请参见下面的教程。</p>
+<h2 id="在windows上使用doh">在Windows上使用DoH</h2>
+<p>想再Windows上使用DoH？直接安装Firefox不就好了？</p>
+<p>当然，如果你是一名狂信徒，非要使用其他浏览器，我这里倒是有个思路：</p>
+<ol>
+<li>
+<p>买一台服务器，系统是Linux。</p>
+</li>
+<li>
+<p>在服务器上重复“在Linux中体验DoH”中的方案</p>
+</li>
+<li>
+<p>把你的DNS服务器地址设为你的服务器的公网IP地址</p>
+</li>
+</ol>
+<p>当然，可能你自己得花点钱。</p>
+<h2 id="在macos中体验doh">在macOS中体验DoH</h2>
+<p>首先，为了安装必要的组件，我们首先要安装Homebrew软件包管理器。在终端中输入：</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">/usr/bin/ruby -e <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&#34;</span>
+</code></pre></div><p>安装完成后，输入以下命令安装cloudflared：</p>
+<pre><code>brew install cloudflare/cloudflare/cloudflared
+</code></pre><p>等待安装，这段时间内你可以去换（chuan）件（shang）衣（nv）服（zhuang）。</p>
+<p>然后，我们要修改一下配置文件，新建一个文件<code>/usr/local/etc/cloudflared/config.yaml</code>，输入如下内容：</p>
+<pre><code>proxy-dns: true
+proxy-dns-upstream:
+  - https://1.1.1.1/dns-query
+  - https://1.0.0.1/dns-query
+</code></pre><p>（顺便提一下，如果1.1.1.1和1.0.0.1两个都连不上，可以把网址删除换成<code>https://dns.google.com/experimental</code>试试，</p>
+<p>好了不要吵了我知道这是天方夜谭）</p>
+<p>配置结束，启动服务：</p>
+<pre><code>sudo cloudflared service install
+</code></pre><p>QED！现在你的电脑已经成了一台DoH服务器，高兴的话你也可以把它当作DNS服务器来用。打开 系统首选项 -&gt; 网络 -&gt; 高级 -&gt; DNS，在列表的最顶端添加 127.0.0.1 即可。</p>
+<h2 id="在linux中体验doh">在Linux中体验DoH</h2>
+<p>同macOS，但安装时一定要记得加PPA源～</p>
+<h2 id="doh的使用测试">DoH的使用测试</h2>
+<p>用dig命令测试一下，发现DOH的使用体验还是相当不错的。对域名<code>www.google.com</code>的查询结果如下：</p>
+<pre><code>$ dig @127.0.0.1 www.google.com
+
+; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; @127.0.0.1 www.google.com
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 48175
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1452
+; PAD: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 (&quot;.................................................................&quot;)
+;; QUESTION SECTION:
+;www.google.com.			IN	A
+
+;; ANSWER SECTION:
+www.google.com.		66	IN	A	216.58.194.196
+
+;; Query time: 165 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1)
+;; WHEN: Tue Apr 16 16:33:38 CST 2019
+;; MSG SIZE  rcvd: 142
+</code></pre><p>注意最下方几行：165毫秒的查询时间不可谓不快。</p>
+<h1 id="总结">总结</h1>
+<p>事实上，如果你饱受各种小广告弹窗之苦，DoH是个不错的应对措施；</p>
+<p>如果你的运营商直接进行DNS劫持，建议投诉或诉诸法律；</p>
+<p>如果你的运营商进行HTTP劫持，推荐DoH。</p>
+<p><strong>点个赞再走吧(๑•́₃ •̀๑)</strong></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+    integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"
+    integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"
+    crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+    integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
+    onload="StackLaTeX()"></script>
+
+<script>
+    function StackLaTeX() {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });
+    }
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">相关文章</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/%E6%85%A2%E6%85%A2%E7%9A%84%E5%B0%B1%E6%B2%A1%E6%9C%89%E4%BA%86%E5%B0%B1%E5%83%8F%E4%BB%8E%E6%9C%AA%E5%AD%98%E5%9C%A8%E8%BF%87/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">慢慢的，就没有了，就像从未存在过</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD%E8%B5%9B%E5%8D%9A%E7%A9%BA%E9%97%B4%E7%8B%AC%E7%AB%8B%E5%AE%A3%E8%A8%80/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">「文章转载」赛博空间独立宣言</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD%E4%BB%96%E8%AF%91%E4%BD%9C%E7%BB%B4%E5%9F%BA%E7%9A%84%E9%82%A3%E4%B8%AA%E7%BD%91%E7%AB%99%E6%B6%88%E5%A4%B1%E5%9C%A8%E7%AB%B9%E5%B9%95%E5%90%8E/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">「文章转载」他译作“维基”的那个网站消失在竹幕后</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "sophon-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 Sophonの博客
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.1">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

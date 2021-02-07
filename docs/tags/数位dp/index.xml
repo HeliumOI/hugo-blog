@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数位DP on Sophonの博客</title>
+    <link>https://example.com/tags/%E6%95%B0%E4%BD%8Ddp/</link>
+    <description>Recent content in 数位DP on Sophonの博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 02 Jan 2021 09:13:28 +0000</lastBuildDate><atom:link href="https://example.com/tags/%E6%95%B0%E4%BD%8Ddp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>「SCOI2009」windy 数</title>
+      <link>https://example.com/post/scoi2009windy-%E6%95%B0/</link>
+      <pubDate>Sat, 02 Jan 2021 09:13:28 +0000</pubDate>
+      
+      <guid>https://example.com/post/scoi2009windy-%E6%95%B0/</guid>
+      <description>题意简述 不含前导零且相邻两个数字之差至少为 $2$ 的正整数被称为 windy 数。windy 想知道，在 $a$ 和 $b$ 之间，包括 $a$ 和 $b$ ，总共有多少个 windy 数？
+题目分析 数位DP模板题
+定义状态 $dp_{i, j}$ 为长度为 $i$ 的windy数中，最高位为 $j$ 的数的数目。
+状态转移方程也很容易得到，可以直接从前一位转移过来：
+$$dp_{i, j} = \sum dp_{i - 1, k} (|j - k| \geq 2)$$
+主要的难点是在计算 $1$ 到 $n$ 之间的 windy 数，这可以分为几个步骤处理。
+第一步，求出所有长度小于等于 $len - 1$ （$len$ 为 $n$ 的长度）的，以 $1$ ~ $9$ 为最高位的 windy 数的总数。
+第二步，求出所有长度为 $len$，最高位小于 $n$ 的最高位的 windy 数的总数。
+第三步，求出所有长度为 $len$，最高位等于 $n$ 的最高位的 windy 数的总数。这一步是最难想的，需要从第二位开始，依次枚举每一位，并累加所有以与上一位的差小于 $2$ 的数为最高位的 windy 数的总数。（前几位之前已经补足。）</description>
+    </item>
+    
+  </channel>
+</rss>

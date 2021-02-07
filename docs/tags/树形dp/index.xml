@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>树形DP on Sophonの博客</title>
+    <link>https://example.com/tags/%E6%A0%91%E5%BD%A2dp/</link>
+    <description>Recent content in 树形DP on Sophonの博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 01 Jan 2021 20:01:39 +0000</lastBuildDate><atom:link href="https://example.com/tags/%E6%A0%91%E5%BD%A2dp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>题解「CF161D」Distance in Tree</title>
+      <link>https://example.com/post/%E9%A2%98%E8%A7%A3cf161ddistance-in-tree/</link>
+      <pubDate>Fri, 01 Jan 2021 20:01:39 +0000</pubDate>
+      
+      <guid>https://example.com/post/%E9%A2%98%E8%A7%A3cf161ddistance-in-tree/</guid>
+      <description>题意简述 给定一颗$N$个节点的树，求树上长度为$K$的路径的数量
+输入 第一行两个数字$N$，$K$，如题意
+接下来的$N−1$行中，每行两个整数$u,v$表示一条树边$(u,v)$
+输出 一个整数$ans$，如题意
+数据范围 $1 \leq N \leq 50000$
+$1 \leq K \leq 500$
+题目分析 虽然此题可以看出是个点分治模板，但由于$K$的范围较小（小于等于$500$），所以树形DP也可以解决这道题
+定义状态$f_{u,i}$为从$u$开始的路径中长度为$i$的路径的数量，可以很容易得出状态转移方程
+$$f_{u, i} = \sum_{v \in son_u} f_{v, i - 1}$$
+回到题目本身，题目中要求我们找出所有长度为$K$的路径
+以$u$为根节点考虑，可以将所有的路径分为两种：经过点$u$的和不经过点$u$的
+对于后者，可以直接递归处理；对于前者，我们可以以点$u$将其分为两条路径，两条路径的长度和为$K$。所以，根据乘法原理，我们只需累加f[v][i] * f[u][k - i - 1]即可。
+另外，累加答案必须在更新$f_{u, i}$之前，因为在更新之前，$f_{u, i}$是从点$u$开始，不经过点$v$的长度为$i$的路径数量，乘以$f_{u, K - i - 1}$就可以得到经过$u, v$的长度为$K$的路径数量。但如果先更新$f_{u, i}$，则$f_{u, i}$是从点$u$开始，经过点$v$和其他子节点的长度为$i$的路径数量，会出现重复：即一条路径从$v$走到$u$，又走回$v$的“重复”现象
+代码 #include&amp;lt;bits/stdc++.h&amp;gt;using namespace std; const int MAXN = 50000 + 5; const int MAXK = 500 + 5; vector&amp;lt;int&amp;gt; G[MAXN]; int f[MAXN][MAXK]; int n, k; long long ans; void dp(int u, int par) { f[u][0] = 1; for(int i = 0; i &amp;lt; G[u].</description>
+    </item>
+    
+  </channel>
+</rss>

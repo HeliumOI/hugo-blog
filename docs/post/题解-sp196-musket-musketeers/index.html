@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='在模拟赛中遇到了这道题。（后来才知道是SPOJ上的原题）
+话不多说，开始动态规划三步走。$Let&amp;rsquo;s\ go!$
+定义状态 假设第1个人能够赢得整场决斗：
+倘若把这位仁兄复制一份，放在$n &#43; 1$的；那么，在一阵厮杀后，他和自己的分身应当能够相遇。那么，我们就和 在[NOI1995]石子合并中一样，将数组翻倍后再处理。
+显而易见定义状态如下：
+$dp_{i,j}$为第$i$人与第$j$人是否能够相遇
+状态转移方程 现在思考一下：第$i$人与第$j$人是否能够相遇？
+按照区间DP的思维，我们在$i$与$j$之间选取一个人$k$
+若$i$与$k$能相遇，$k$与$j$能相遇，且$i$与$j$当中的任何一个人能干掉$k$
+故状态转移方程为：
+$$dp_{i,j} = dp_{i,k} &amp;amp;&amp;amp;\ dp_{k,j} &amp;amp;&amp;amp;\ (w_{i,k} || w_{j,k})$$
+边界条件 显然， 若两人本来就相邻，则$dp_{i,j} = 1$
+代码 #include&amp;lt;iostream&amp;gt;#include&amp;lt;cstring&amp;gt;using namespace std; const int MAXN = 100 * 2 &#43; 5; int w[MAXN][MAXN], f[MAXN][MAXN]; int n; int main() { int t; cin &amp;gt;&amp;gt; t; while(t--) { memset(f, 0, sizeof(f)); //数组清零，我在这里掉了两次坑  memset(w, 0, sizeof(w)); cin &amp;gt;&amp;gt; n; for(int i = 1; i &amp;lt;= n; i&#43;&#43;) { for(int j = 1; j &amp;lt;= n; j&#43;&#43;) { char c; cin &amp;gt;&amp;gt; c; w[i][j] = c - &amp;#39;0&amp;#39;; w[i &#43; n][j &#43; n] = w[i &#43; n][j] = w[i][j &#43; n] = w[i][j]; } } for(int l = 1; l &amp;lt;= n &#43; 1; l&#43;&#43;) { for(int i = 1; i &#43; l - 1 &amp;lt;= n * 2; i&#43;&#43;) { int j = i &#43; l - 1; if(l &amp;lt;= 2) { f[i][j] = 1; //边界条件  continue; } for(int k = i; k &amp;lt;= j; k&#43;&#43;) { if(f[i][k] &amp;amp;&amp;amp; f[k][j] &amp;amp;&amp;amp; (w[i][k] || w[j][k])) { f[i][j] = 1; break; } } } } int ans = 0; for(int i = 1; i &amp;lt;= n; i&#43;&#43;) { if(f[i][i &#43; n]) { ans&#43;&#43;; } } cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; endl; for(int i = 1; i &amp;lt;= n; i&#43;&#43;) { if(f[i][i &#43; n]) { cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; endl; } } } return 0; } '><title>题解 SP196 【MUSKET - Musketeers】</title>
+
+<link rel='canonical' href='https://example.com/post/%E9%A2%98%E8%A7%A3-sp196-musket-musketeers/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='题解 SP196 【MUSKET - Musketeers】'>
+<meta property='og:description' content='在模拟赛中遇到了这道题。（后来才知道是SPOJ上的原题）
+话不多说，开始动态规划三步走。$Let&amp;rsquo;s\ go!$
+定义状态 假设第1个人能够赢得整场决斗：
+倘若把这位仁兄复制一份，放在$n &#43; 1$的；那么，在一阵厮杀后，他和自己的分身应当能够相遇。那么，我们就和 在[NOI1995]石子合并中一样，将数组翻倍后再处理。
+显而易见定义状态如下：
+$dp_{i,j}$为第$i$人与第$j$人是否能够相遇
+状态转移方程 现在思考一下：第$i$人与第$j$人是否能够相遇？
+按照区间DP的思维，我们在$i$与$j$之间选取一个人$k$
+若$i$与$k$能相遇，$k$与$j$能相遇，且$i$与$j$当中的任何一个人能干掉$k$
+故状态转移方程为：
+$$dp_{i,j} = dp_{i,k} &amp;amp;&amp;amp;\ dp_{k,j} &amp;amp;&amp;amp;\ (w_{i,k} || w_{j,k})$$
+边界条件 显然， 若两人本来就相邻，则$dp_{i,j} = 1$
+代码 #include&amp;lt;iostream&amp;gt;#include&amp;lt;cstring&amp;gt;using namespace std; const int MAXN = 100 * 2 &#43; 5; int w[MAXN][MAXN], f[MAXN][MAXN]; int n; int main() { int t; cin &amp;gt;&amp;gt; t; while(t--) { memset(f, 0, sizeof(f)); //数组清零，我在这里掉了两次坑  memset(w, 0, sizeof(w)); cin &amp;gt;&amp;gt; n; for(int i = 1; i &amp;lt;= n; i&#43;&#43;) { for(int j = 1; j &amp;lt;= n; j&#43;&#43;) { char c; cin &amp;gt;&amp;gt; c; w[i][j] = c - &amp;#39;0&amp;#39;; w[i &#43; n][j &#43; n] = w[i &#43; n][j] = w[i][j &#43; n] = w[i][j]; } } for(int l = 1; l &amp;lt;= n &#43; 1; l&#43;&#43;) { for(int i = 1; i &#43; l - 1 &amp;lt;= n * 2; i&#43;&#43;) { int j = i &#43; l - 1; if(l &amp;lt;= 2) { f[i][j] = 1; //边界条件  continue; } for(int k = i; k &amp;lt;= j; k&#43;&#43;) { if(f[i][k] &amp;amp;&amp;amp; f[k][j] &amp;amp;&amp;amp; (w[i][k] || w[j][k])) { f[i][j] = 1; break; } } } } int ans = 0; for(int i = 1; i &amp;lt;= n; i&#43;&#43;) { if(f[i][i &#43; n]) { ans&#43;&#43;; } } cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; endl; for(int i = 1; i &amp;lt;= n; i&#43;&#43;) { if(f[i][i &#43; n]) { cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; endl; } } } return 0; } '>
+<meta property='og:url' content='https://example.com/post/%E9%A2%98%E8%A7%A3-sp196-musket-musketeers/'>
+<meta property='og:site_name' content='Sophonの博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='SPOJ' /><meta property='article:tag' content='题解' /><meta property='article:tag' content='区间DP' /><meta property='article:published_time' content='2019-07-29T11:42:00&#43;00:00'/><meta property='article:modified_time' content='2019-07-29T11:42:00&#43;00:00'/>
+<meta name="twitter:title" content="题解 SP196 【MUSKET - Musketeers】">
+<meta name="twitter:description" content="在模拟赛中遇到了这道题。（后来才知道是SPOJ上的原题）
+话不多说，开始动态规划三步走。$Let&amp;rsquo;s\ go!$
+定义状态 假设第1个人能够赢得整场决斗：
+倘若把这位仁兄复制一份，放在$n &#43; 1$的；那么，在一阵厮杀后，他和自己的分身应当能够相遇。那么，我们就和 在[NOI1995]石子合并中一样，将数组翻倍后再处理。
+显而易见定义状态如下：
+$dp_{i,j}$为第$i$人与第$j$人是否能够相遇
+状态转移方程 现在思考一下：第$i$人与第$j$人是否能够相遇？
+按照区间DP的思维，我们在$i$与$j$之间选取一个人$k$
+若$i$与$k$能相遇，$k$与$j$能相遇，且$i$与$j$当中的任何一个人能干掉$k$
+故状态转移方程为：
+$$dp_{i,j} = dp_{i,k} &amp;amp;&amp;amp;\ dp_{k,j} &amp;amp;&amp;amp;\ (w_{i,k} || w_{j,k})$$
+边界条件 显然， 若两人本来就相邻，则$dp_{i,j} = 1$
+代码 #include&amp;lt;iostream&amp;gt;#include&amp;lt;cstring&amp;gt;using namespace std; const int MAXN = 100 * 2 &#43; 5; int w[MAXN][MAXN], f[MAXN][MAXN]; int n; int main() { int t; cin &amp;gt;&amp;gt; t; while(t--) { memset(f, 0, sizeof(f)); //数组清零，我在这里掉了两次坑  memset(w, 0, sizeof(w)); cin &amp;gt;&amp;gt; n; for(int i = 1; i &amp;lt;= n; i&#43;&#43;) { for(int j = 1; j &amp;lt;= n; j&#43;&#43;) { char c; cin &amp;gt;&amp;gt; c; w[i][j] = c - &amp;#39;0&amp;#39;; w[i &#43; n][j &#43; n] = w[i &#43; n][j] = w[i][j &#43; n] = w[i][j]; } } for(int l = 1; l &amp;lt;= n &#43; 1; l&#43;&#43;) { for(int i = 1; i &#43; l - 1 &amp;lt;= n * 2; i&#43;&#43;) { int j = i &#43; l - 1; if(l &amp;lt;= 2) { f[i][j] = 1; //边界条件  continue; } for(int k = i; k &amp;lt;= j; k&#43;&#43;) { if(f[i][k] &amp;amp;&amp;amp; f[k][j] &amp;amp;&amp;amp; (w[i][k] || w[j][k])) { f[i][j] = 1; break; } } } } int ans = 0; for(int i = 1; i &amp;lt;= n; i&#43;&#43;) { if(f[i][i &#43; n]) { ans&#43;&#43;; } } cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; endl; for(int i = 1; i &amp;lt;= n; i&#43;&#43;) { if(f[i][i &#43; n]) { cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; endl; } } } return 0; } ">
+    <link rel="shortcut icon" href="img/avatar.jpg" />
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu5d98ca782c8bcb789c89210a0f8e3e46_129611_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🦊</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://example.com">Sophonの博客</a></h1>
+        <h2 class="site-description">面对我们的骨灰，高尚的人们将洒下热泪</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/tags'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>暗色模式</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://example.com" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E9%A2%98%E8%A7%A3/" >
+                题解
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/%E9%A2%98%E8%A7%A3-sp196-musket-musketeers/">题解 SP196 【MUSKET - Musketeers】</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Jul 29, 2019</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <p>在模拟赛中遇到了这道题。（后来才知道是SPOJ上的原题）</p>
+<p>话不多说，开始动态规划三步走。$Let&rsquo;s\ go!$</p>
+<h2 id="定义状态">定义状态</h2>
+<p>假设第1个人能够赢得整场决斗：</p>
+<p>倘若把这位仁兄复制一份，放在$n + 1$的；那么，在一阵厮杀后，他和自己的分身应当能够相遇。那么，我们就和 在<a class="link" href="https://www.luogu.org/problem/P1880"  target="_blank" rel="noopener"
+    >[NOI1995]石子合并</a>中一样，将数组翻倍后再处理。</p>
+<p><del>显而易见</del>定义状态如下：</p>
+<p>$dp_{i,j}$为第$i$人与第$j$人是否能够相遇</p>
+<h2 id="状态转移方程">状态转移方程</h2>
+<p>现在思考一下：第$i$人与第$j$人是否能够相遇？</p>
+<p>按照区间DP的思维，我们在$i$与$j$之间选取一个人$k$</p>
+<p>若$i$与$k$能相遇，$k$与$j$能相遇，且$i$与$j$当中的任何一个人能干掉$k$</p>
+<p>故状态转移方程为：</p>
+<p>$$dp_{i,j} = dp_{i,k} &amp;&amp;\ dp_{k,j} &amp;&amp;\ (w_{i,k} || w_{j,k})$$</p>
+<h2 id="边界条件">边界条件</h2>
+<p><del>显然，</del> 若两人本来就相邻，则$dp_{i,j} = 1$</p>
+<h2 id="代码">代码</h2>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;cstring&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAXN</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">w</span><span class="p">[</span><span class="n">MAXN</span><span class="p">][</span><span class="n">MAXN</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">MAXN</span><span class="p">][</span><span class="n">MAXN</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">t</span><span class="p">;</span>
+
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">t</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">t</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">memset</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">f</span><span class="p">));</span> <span class="c1">//数组清零，我在这里掉了两次坑
+</span><span class="c1"></span>        <span class="n">memset</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">w</span><span class="p">));</span>
+
+        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
+                <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">c</span><span class="p">;</span>
+                <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
+                <span class="n">w</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">n</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">n</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">l</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">+</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+                <span class="k">if</span><span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//边界条件
+</span><span class="c1"></span>                    <span class="k">continue</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">j</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">if</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">f</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">||</span> <span class="n">w</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]))</span> <span class="p">{</span>
+                        <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span> <span class="o">+</span> <span class="n">n</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">ans</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ans</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span> <span class="o">+</span> <span class="n">n</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/spoj/">SPOJ</a>
+        
+            <a href="/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+        
+            <a href="/tags/%E5%8C%BA%E9%97%B4dp/">区间DP</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+    integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"
+    integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"
+    crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+    integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
+    onload="StackLaTeX()"></script>
+
+<script>
+    function StackLaTeX() {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });
+    }
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">相关文章</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/scoi2009windy-%E6%95%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">「SCOI2009」windy 数</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E9%A2%98%E8%A7%A3cf1200ecompress-words/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">题解「CF1200E」Compress Words</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E9%A2%98%E8%A7%A3cf161ddistance-in-tree/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">题解「CF161D」Distance in Tree</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/tjoi2013%E5%8D%95%E8%AF%8D-%E9%A2%98%E8%A7%A3/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【TJOI2013】单词-题解</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E9%A2%98%E8%A7%A3p3197-hnoi2008%E8%B6%8A%E7%8B%B1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">题解P3197 [HNOI2008]越狱</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "sophon-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 Sophonの博客
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.1">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

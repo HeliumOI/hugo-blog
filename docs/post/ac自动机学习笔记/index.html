@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='再不更新这里都长草了
+前置知识  KMP Trie树  前言 AC自动机是一个字符串匹配算法，与KMP的区别在于，AC自动机可以用$O(\sum |s_i| &#43; |S|)$的复杂度在文本串中同时查找多个模式串，例如这道题
+对于初学者 就是我 而言，可以简单地将AC自动机理解为KMP &#43; Trie树，整个算法分为三步：
+ 将所有的模式串建成一颗Trie树 求出Trie树上每一个节点的失配指针（fail）（类似KMP的next） 将文本串在Trie树上进行匹配  算法过程 建立Trie 这一步和普通的字典树一样，不解释
+void insert(string&amp;amp; s) { int p = 0; for(int i = 0; i &amp;lt; s.length(); i&#43;&#43;) { if(t[p][s[i] - &amp;#39;a&amp;#39;] == 0) { t[p][s[i] - &amp;#39;a&amp;#39;] = &#43;&#43;tot; } p = t[p][s[i] - &amp;#39;a&amp;#39;]; } num[p]&#43;&#43;; } 求失配指针 $fail_u$的定义为，Tire树内所有字符串的所有前缀中，后缀匹配长度最大的的位置；如下图中，$fail_i = j$
+（图中不同颜色的边代表字符）
+如图，节点$i$与节点$j$的后缀匹配最长，所以$fail_i = j$
+如图，$fail_i = j$，则$i$的粉色子节点（此处用颜色表示字符）必然也与$j$的粉色子节点有最长的后缀，因此该子节点的$fail$指针就是$k$'><title>AC自动机学习笔记</title>
+
+<link rel='canonical' href='https://example.com/post/ac%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='AC自动机学习笔记'>
+<meta property='og:description' content='再不更新这里都长草了
+前置知识  KMP Trie树  前言 AC自动机是一个字符串匹配算法，与KMP的区别在于，AC自动机可以用$O(\sum |s_i| &#43; |S|)$的复杂度在文本串中同时查找多个模式串，例如这道题
+对于初学者 就是我 而言，可以简单地将AC自动机理解为KMP &#43; Trie树，整个算法分为三步：
+ 将所有的模式串建成一颗Trie树 求出Trie树上每一个节点的失配指针（fail）（类似KMP的next） 将文本串在Trie树上进行匹配  算法过程 建立Trie 这一步和普通的字典树一样，不解释
+void insert(string&amp;amp; s) { int p = 0; for(int i = 0; i &amp;lt; s.length(); i&#43;&#43;) { if(t[p][s[i] - &amp;#39;a&amp;#39;] == 0) { t[p][s[i] - &amp;#39;a&amp;#39;] = &#43;&#43;tot; } p = t[p][s[i] - &amp;#39;a&amp;#39;]; } num[p]&#43;&#43;; } 求失配指针 $fail_u$的定义为，Tire树内所有字符串的所有前缀中，后缀匹配长度最大的的位置；如下图中，$fail_i = j$
+（图中不同颜色的边代表字符）
+如图，节点$i$与节点$j$的后缀匹配最长，所以$fail_i = j$
+如图，$fail_i = j$，则$i$的粉色子节点（此处用颜色表示字符）必然也与$j$的粉色子节点有最长的后缀，因此该子节点的$fail$指针就是$k$'>
+<meta property='og:url' content='https://example.com/post/ac%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'>
+<meta property='og:site_name' content='Sophonの博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='字符串' /><meta property='article:tag' content='AC自动机' /><meta property='article:published_time' content='2021-01-01T00:24:39&#43;00:00'/><meta property='article:modified_time' content='2021-01-01T00:24:39&#43;00:00'/>
+<meta name="twitter:title" content="AC自动机学习笔记">
+<meta name="twitter:description" content="再不更新这里都长草了
+前置知识  KMP Trie树  前言 AC自动机是一个字符串匹配算法，与KMP的区别在于，AC自动机可以用$O(\sum |s_i| &#43; |S|)$的复杂度在文本串中同时查找多个模式串，例如这道题
+对于初学者 就是我 而言，可以简单地将AC自动机理解为KMP &#43; Trie树，整个算法分为三步：
+ 将所有的模式串建成一颗Trie树 求出Trie树上每一个节点的失配指针（fail）（类似KMP的next） 将文本串在Trie树上进行匹配  算法过程 建立Trie 这一步和普通的字典树一样，不解释
+void insert(string&amp;amp; s) { int p = 0; for(int i = 0; i &amp;lt; s.length(); i&#43;&#43;) { if(t[p][s[i] - &amp;#39;a&amp;#39;] == 0) { t[p][s[i] - &amp;#39;a&amp;#39;] = &#43;&#43;tot; } p = t[p][s[i] - &amp;#39;a&amp;#39;]; } num[p]&#43;&#43;; } 求失配指针 $fail_u$的定义为，Tire树内所有字符串的所有前缀中，后缀匹配长度最大的的位置；如下图中，$fail_i = j$
+（图中不同颜色的边代表字符）
+如图，节点$i$与节点$j$的后缀匹配最长，所以$fail_i = j$
+如图，$fail_i = j$，则$i$的粉色子节点（此处用颜色表示字符）必然也与$j$的粉色子节点有最长的后缀，因此该子节点的$fail$指针就是$k$">
+    <link rel="shortcut icon" href="img/avatar.jpg" />
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu5d98ca782c8bcb789c89210a0f8e3e46_129611_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🦊</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://example.com">Sophonの博客</a></h1>
+        <h2 class="site-description">面对我们的骨灰，高尚的人们将洒下热泪</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/tags'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>暗色模式</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://example.com" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" >
+                学习笔记
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/ac%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">AC自动机学习笔记</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Jan 01, 2021</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <p><del>再不更新这里都长草了</del></p>
+<h2 id="前置知识">前置知识</h2>
+<ul>
+<li>KMP</li>
+<li>Trie树</li>
+</ul>
+<h2 id="前言">前言</h2>
+<p>AC自动机是一个字符串匹配算法，与KMP的区别在于，AC自动机可以用$O(\sum |s_i| + |S|)$的复杂度在文本串中同时查找多个模式串，例如<a class="link" href="https://www.luogu.com.cn/problem/P3808"  target="_blank" rel="noopener"
+    >这道题</a></p>
+<p>对于初学者 <del>就是我</del> 而言，可以简单地将AC自动机理解为KMP + Trie树，整个算法分为三步：</p>
+<ol>
+<li>将所有的模式串建成一颗Trie树</li>
+<li>求出Trie树上每一个节点的失配指针（fail）（类似KMP的next）</li>
+<li>将文本串在Trie树上进行匹配</li>
+</ol>
+<h2 id="算法过程">算法过程</h2>
+<h3 id="建立trie">建立Trie</h3>
+<p>这一步和普通的字典树一样，不解释</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="sc">&#39;a&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">t</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="sc">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">++</span><span class="n">tot</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">p</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="sc">&#39;a&#39;</span><span class="p">];</span>
+	<span class="p">}</span>
+	<span class="n">num</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="求失配指针">求失配指针</h3>
+<p>$fail_u$的定义为，Tire树内所有字符串的所有前缀中，后缀匹配长度最大的的位置；如下图中，$fail_i = j$</p>
+<p>（图中不同颜色的边代表字符）</p>
+<!-- raw HTML omitted -->
+<p>如图，节点$i$与节点$j$的后缀匹配最长，所以$fail_i = j$</p>
+<!-- raw HTML omitted -->
+<p>如图，$fail_i = j$，则$i$的粉色子节点（此处用颜色表示字符）必然也与$j$的粉色子节点有最长的后缀，因此该子节点的$fail$指针就是$k$</p>
+<p>具体求法：对于$u$的子节点$v$，其$fail$指针为$u$的$fail$指针的字符与$v$相同的子节点，证明很简单，因为$fail_u$与$u$的后缀匹配最长，而$v$节点上的字符$i$显然与$trie[fail_u][i]$上的字符$i$相同，所以$fail_v = trie[fail_u][i]$</p>
+<p>理解原理后我们很容易就能求出所有的$fail$指针：在字典树上跑一遍BFS，根节点的子节点的$fail$指针显然为0，所以先将这些点放入队列；</p>
+<p>对于每一个当前搜索到的节点$u$，它的$fail$指针肯定已经被求出，所以我们只需要枚举它的所有子节点<code>t[u][i]</code>，建立$fail$指针 <code>fail[t[u][i]] = t[fail[u]][i]</code></p>
+<p>代码如下：</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">getFail</span><span class="p">()</span> <span class="p">{</span> <span class="c1">//bfs构建fail数组
+</span><span class="c1"></span>	<span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+	
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">26</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//根结点下面直接连的第一层结点，fail直接指向根结点0 
+</span><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+			<span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span> <span class="c1">//队列中维护能够拓展fail值的结点 
+</span><span class="c1"></span>		<span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span> <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+		
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">26</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+                <span class="c1">//失配时，以trie[u][i]结尾的后缀尽量在trie中找一个与之相同的前缀（类似KMP）
+</span><span class="c1"></span>				<span class="n">fail</span><span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">fail</span><span class="p">[</span><span class="n">u</span><span class="p">]][</span><span class="n">i</span><span class="p">];</span>
+				<span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="p">]);</span>
+			<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="c1">//节点不存在，往上连，最多回到根结点0, 注意是trie不是fail数组
+</span><span class="c1"></span>				<span class="n">t</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">fail</span><span class="p">[</span><span class="n">u</span><span class="p">]][</span><span class="n">i</span><span class="p">];</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="字符串匹配">字符串匹配</h3>
+<p>这一部分理解难度不大，看代码注释即可：</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">query</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//p表示trie中的结点，res表示总和
+</span><span class="c1"></span>	
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">p</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="sc">&#39;a&#39;</span><span class="p">];</span> <span class="c1">//获取当前节点
+</span><span class="c1"></span>		
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span> <span class="n">j</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">num</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">=</span> <span class="n">fail</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">{</span> <span class="c1">//从p开始一直往上跳
+</span><span class="c1"></span>			<span class="n">res</span> <span class="o">+=</span> <span class="n">num</span><span class="p">[</span><span class="n">j</span><span class="p">];</span> <span class="c1">//num[j]表示以当前位置结尾字符串的总数，它们肯定都是
+</span><span class="c1"></span>			<span class="n">num</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">//避免重复计算
+</span><span class="c1"></span>		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>用$p$表示将字符串在$Trie$树上匹配时的位置，在每一轮循环中以$p$为起点向上跳，寻找匹配即可</p>
+<h2 id="复杂度分析">复杂度分析</h2>
+<p>Trie树的大小为$\sum |s_i|$，建立$fail$指针的复杂度与其相同，遍历文本串需要$O(|S|)$，总时间复杂度为$O(\sum |s_i| + |S|)$</p>
+<h2 id="参考资料">参考资料</h2>
+<p><a class="link" href="https://oi-wiki.org/string/ac-automaton/"  target="_blank" rel="noopener"
+    >AC 自动机 - OI Wiki</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+        
+            <a href="/tags/ac%E8%87%AA%E5%8A%A8%E6%9C%BA/">AC自动机</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+    integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"
+    integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"
+    crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+    integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
+    onload="StackLaTeX()"></script>
+
+<script>
+    function StackLaTeX() {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });
+    }
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">相关文章</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/tjoi2013%E5%8D%95%E8%AF%8D-%E9%A2%98%E8%A7%A3/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【TJOI2013】单词-题解</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%87%B8%E5%8C%85/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">计算几何：凸包</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/splay%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Splay学习笔记</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E4%B8%80%E7%BB%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">一维数据结构学习笔记</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "sophon-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 Sophonの博客
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.1">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

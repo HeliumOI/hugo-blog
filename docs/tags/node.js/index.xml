@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Node.js on Sophonの博客</title>
+    <link>https://example.com/tags/node.js/</link>
+    <description>Recent content in Node.js on Sophonの博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 10 Aug 2020 15:39:53 +0000</lastBuildDate><atom:link href="https://example.com/tags/node.js/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hexo踩坑记录（一）</title>
+      <link>https://example.com/post/hexo%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E4%B8%80/</link>
+      <pubDate>Mon, 10 Aug 2020 15:39:53 +0000</pubDate>
+      
+      <guid>https://example.com/post/hexo%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E4%B8%80/</guid>
+      <description>最近几天翻找自己的学习笔记时，忽然发现自己的Hexo博客已经长了几个月的草，于是一时兴起又更新了一下Hexo博客，但在构建博客时出现了问题：
+Hexo与Node.js的兼容性 mike@MacBook-Pro ~/hexo $ hexo g [15:13:57] INFO Validating config INFO Start processing INFO Files loaded in 3.05 s (node:18613) Warning: Accessing non-existent property &#39;lineno&#39; of module exports inside circular dependency (Use `node --trace-warnings ...` to show where the warning was created) (node:18613) Warning: Accessing non-existent property &#39;column&#39; of module exports inside circular dependency (node:18613) Warning: Accessing non-existent property &#39;filename&#39; of module exports inside circular dependency (node:18613) Warning: Accessing non-existent property &#39;lineno&#39; of module exports inside circular dependency (node:18613) Warning: Accessing non-existent property &#39;column&#39; of module exports inside circular dependency (node:18613) Warning: Accessing non-existent property &#39;filename&#39; of module exports inside circular dependency INFO Generated: tags/index.</description>
+    </item>
+    
+  </channel>
+</rss>

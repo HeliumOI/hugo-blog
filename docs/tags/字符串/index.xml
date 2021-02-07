@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>字符串 on Sophonの博客</title>
+    <link>https://example.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
+    <description>Recent content in 字符串 on Sophonの博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 01 Jan 2021 23:53:05 +0000</lastBuildDate><atom:link href="https://example.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>题解「CF1200E」Compress Words</title>
+      <link>https://example.com/post/%E9%A2%98%E8%A7%A3cf1200ecompress-words/</link>
+      <pubDate>Fri, 01 Jan 2021 23:53:05 +0000</pubDate>
+      
+      <guid>https://example.com/post/%E9%A2%98%E8%A7%A3cf1200ecompress-words/</guid>
+      <description>题意简述   给定 $n$ 个单词，将这 $n$ 个单词从前往后拼接在一起，若相邻两个单词的后缀和前缀相同则将其重合在一起。
+  如输入 sample please ease in out，sample 与 please 拼接得 samplease，samplease 与 ease 拼接仍得 samplease，最终得 sampleaseinout
+  题目分析 题目的关键在于求出两个字符串之间的最长公共部分，即相等的前缀与后缀。这很容易让人联想到 KMP 的 $next$ 数组，它的定义是一个字符串的前缀的最长的相同的前缀与后缀的长度，$next[len - 1]$ 的定义就是这个字符串的最长的相同的前缀与后缀的长度。
+因此，对于字符串 $s1$ 和 $s2$，我们只需要将 $s2$ 拼接在 $s1$ 前面，例如将 sample 与 please 拼接为 pleasesample，再求出这个字符串的 $next[len - 1]$ 等于 $2$，就可以简单地得到公共部分为 ple，再从 $2$ 开始截取 please 的后半部分 ease 拼接到 sample 后面即可。
+对于 $n$ 个字符串，则应该按照上面的方法依次拼接。
+P.S. 一个优化：因为两个字符串之间的最长公共部分的长度显然不可能大于其中任意一个字符串的长度，所以在一开始拼接时，只需要求出两个字符串中较短的的长度 $l$，将第一个字符串的后 $l$ 个字符拼接到第二个字符串后面，再求 $next[len - 1]$ 的值。</description>
+    </item>
+    
+    <item>
+      <title>【TJOI2013】单词-题解</title>
+      <link>https://example.com/post/tjoi2013%E5%8D%95%E8%AF%8D-%E9%A2%98%E8%A7%A3/</link>
+      <pubDate>Fri, 01 Jan 2021 13:08:24 +0000</pubDate>
+      
+      <guid>https://example.com/post/tjoi2013%E5%8D%95%E8%AF%8D-%E9%A2%98%E8%A7%A3/</guid>
+      <description>题意简述 给出$n$个单词，统计每个单词在全体单词（包括自身）中的出现次数
+题目分析 对多个模式串进行匹配，求每个模式串的出现次数，显然是AC自动机模版题
+本题与模版的区别在于，本题中单词可能会有重复，因此要用一个$cnt$数组记录$Trie$树上每个节点被覆盖了几次，再用一个$vis$数组记录当前节点是否已经被累加过了
+如果当前节点$i$还没有被累加过（$vis_i = false$），就将它往上能跳到的节点都加上$cnt_i$，扫完后再将$vis_i$变为$true$
+代码 #include&amp;lt;bits/stdc++.h&amp;gt;using namespace std; const int MAXN = 1000000 + 5; const int MAXM = 200 + 5; string s[MAXM]; bool vis[MAXN]; int t[MAXN][26], sum[MAXN], cnt[MAXN], ed[MAXN], ans[MAXN]; int fail[MAXN]; int tot; int insert(string&amp;amp; s) { int p = 0; for(int i = 0; i &amp;lt; s.length(); i++) { if(t[p][s[i] - &amp;#39;a&amp;#39;] == 0) { t[p][s[i] - &amp;#39;a&amp;#39;] = ++tot; } p = t[p][s[i] - &amp;#39;a&amp;#39;]; cnt[p]++; } return p; } void getFail() { queue&amp;lt;int&amp;gt; q; for(int i = 0; i &amp;lt; 26; i++) { if(t[0][i]) { q.</description>
+    </item>
+    
+    <item>
+      <title>AC自动机学习笔记</title>
+      <link>https://example.com/post/ac%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 01 Jan 2021 00:24:39 +0000</pubDate>
+      
+      <guid>https://example.com/post/ac%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>再不更新这里都长草了
+前置知识  KMP Trie树  前言 AC自动机是一个字符串匹配算法，与KMP的区别在于，AC自动机可以用$O(\sum |s_i| + |S|)$的复杂度在文本串中同时查找多个模式串，例如这道题
+对于初学者 就是我 而言，可以简单地将AC自动机理解为KMP + Trie树，整个算法分为三步：
+ 将所有的模式串建成一颗Trie树 求出Trie树上每一个节点的失配指针（fail）（类似KMP的next） 将文本串在Trie树上进行匹配  算法过程 建立Trie 这一步和普通的字典树一样，不解释
+void insert(string&amp;amp; s) { int p = 0; for(int i = 0; i &amp;lt; s.length(); i++) { if(t[p][s[i] - &amp;#39;a&amp;#39;] == 0) { t[p][s[i] - &amp;#39;a&amp;#39;] = ++tot; } p = t[p][s[i] - &amp;#39;a&amp;#39;]; } num[p]++; } 求失配指针 $fail_u$的定义为，Tire树内所有字符串的所有前缀中，后缀匹配长度最大的的位置；如下图中，$fail_i = j$
+（图中不同颜色的边代表字符）
+如图，节点$i$与节点$j$的后缀匹配最长，所以$fail_i = j$
+如图，$fail_i = j$，则$i$的粉色子节点（此处用颜色表示字符）必然也与$j$的粉色子节点有最长的后缀，因此该子节点的$fail$指针就是$k$</description>
+    </item>
+    
+  </channel>
+</rss>

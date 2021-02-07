@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='一维数据结构学习笔记 链表 链表:按顺序记录元素的线性数据结构。
+其中的“顺序”是逻辑上的顺序，不一定是物理存储上的顺序。
+链表分为单向与双向两种：
+1.单向链表:每个元素只记录了下一个元素的位置。
+2.双向链表:每个元素记录了上一个及下一个元素的位置。
+代码实现：
+//用类来定义链表中的每个元素。 class Node { public: int v = 0; Node * next = NULL, * prev = NULL; /*前一个元素或者后一个元素可以不存在，所以必须要使用指针类型。*/ Node(int v = 0, Node * next = NULL, Node * prev = NULL):v(v), next(next), prev(prev) {} }; 链表常用操作:构造链表 通过实例化链表类，创建链表的每个元素并建立元素之间的关系。
+代码实现：
+//构造一个只有头尾两个元素的链表。 Node* head = new Node(); Node* tail = new Node(); head -&amp;gt; next = tail; tile -&amp;gt; prev = head; 链表常用操作:遍历链表 将链表头赋值给临时变量，然后不断寻找下一个元素直到空。'><title>一维数据结构学习笔记</title>
+
+<link rel='canonical' href='https://example.com/post/%E4%B8%80%E7%BB%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='一维数据结构学习笔记'>
+<meta property='og:description' content='一维数据结构学习笔记 链表 链表:按顺序记录元素的线性数据结构。
+其中的“顺序”是逻辑上的顺序，不一定是物理存储上的顺序。
+链表分为单向与双向两种：
+1.单向链表:每个元素只记录了下一个元素的位置。
+2.双向链表:每个元素记录了上一个及下一个元素的位置。
+代码实现：
+//用类来定义链表中的每个元素。 class Node { public: int v = 0; Node * next = NULL, * prev = NULL; /*前一个元素或者后一个元素可以不存在，所以必须要使用指针类型。*/ Node(int v = 0, Node * next = NULL, Node * prev = NULL):v(v), next(next), prev(prev) {} }; 链表常用操作:构造链表 通过实例化链表类，创建链表的每个元素并建立元素之间的关系。
+代码实现：
+//构造一个只有头尾两个元素的链表。 Node* head = new Node(); Node* tail = new Node(); head -&amp;gt; next = tail; tile -&amp;gt; prev = head; 链表常用操作:遍历链表 将链表头赋值给临时变量，然后不断寻找下一个元素直到空。'>
+<meta property='og:url' content='https://example.com/post/%E4%B8%80%E7%BB%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'>
+<meta property='og:site_name' content='Sophonの博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='数据结构' /><meta property='article:published_time' content='2019-03-15T10:15:00&#43;00:00'/><meta property='article:modified_time' content='2019-03-15T10:15:00&#43;00:00'/>
+<meta name="twitter:title" content="一维数据结构学习笔记">
+<meta name="twitter:description" content="一维数据结构学习笔记 链表 链表:按顺序记录元素的线性数据结构。
+其中的“顺序”是逻辑上的顺序，不一定是物理存储上的顺序。
+链表分为单向与双向两种：
+1.单向链表:每个元素只记录了下一个元素的位置。
+2.双向链表:每个元素记录了上一个及下一个元素的位置。
+代码实现：
+//用类来定义链表中的每个元素。 class Node { public: int v = 0; Node * next = NULL, * prev = NULL; /*前一个元素或者后一个元素可以不存在，所以必须要使用指针类型。*/ Node(int v = 0, Node * next = NULL, Node * prev = NULL):v(v), next(next), prev(prev) {} }; 链表常用操作:构造链表 通过实例化链表类，创建链表的每个元素并建立元素之间的关系。
+代码实现：
+//构造一个只有头尾两个元素的链表。 Node* head = new Node(); Node* tail = new Node(); head -&amp;gt; next = tail; tile -&amp;gt; prev = head; 链表常用操作:遍历链表 将链表头赋值给临时变量，然后不断寻找下一个元素直到空。">
+    <link rel="shortcut icon" href="img/avatar.jpg" />
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu5d98ca782c8bcb789c89210a0f8e3e46_129611_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🦊</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://example.com">Sophonの博客</a></h1>
+        <h2 class="site-description">面对我们的骨灰，高尚的人们将洒下热泪</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/tags'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>暗色模式</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://example.com" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" >
+                学习笔记
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/%E4%B8%80%E7%BB%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">一维数据结构学习笔记</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Mar 15, 2019</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h1 id="一维数据结构学习笔记">一维数据结构学习笔记</h1>
+<h2 id="链表">链表</h2>
+<p>链表:按顺序记录元素的线性数据结构。</p>
+<p>其中的“顺序”是逻辑上的顺序，不一定是物理存储上的顺序。</p>
+<p>链表分为单向与双向两种：</p>
+<p>1.单向链表:每个元素只记录了下一个元素的位置。</p>
+<p>2.双向链表:每个元素记录了上一个及下一个元素的位置。</p>
+<p>代码实现：</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//用类来定义链表中的每个元素。
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">Node</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">Node</span> <span class="o">*</span> <span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="o">*</span> <span class="n">prev</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="cm">/*前一个元素或者后一个元素可以不存在，所以必须要使用指针类型。*/</span>
+    
+    <span class="n">Node</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span> <span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span> <span class="n">prev</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">)</span><span class="o">:</span><span class="n">v</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">next</span><span class="p">(</span><span class="n">next</span><span class="p">),</span> <span class="n">prev</span><span class="p">(</span><span class="n">prev</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">};</span>
+</code></pre></div><h3 id="链表常用操作构造链表">链表常用操作:构造链表</h3>
+<p>通过实例化链表类，创建链表的每个元素并建立元素之间的关系。</p>
+<p>代码实现：</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//构造一个只有头尾两个元素的链表。
+</span><span class="c1"></span><span class="n">Node</span><span class="o">*</span> <span class="n">head</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="p">();</span> 
+<span class="n">Node</span><span class="o">*</span> <span class="n">tail</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="p">();</span> 
+
+<span class="n">head</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="n">tail</span><span class="p">;</span>
+<span class="n">tile</span> <span class="o">-&gt;</span> <span class="n">prev</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+</code></pre></div><h3 id="链表常用操作遍历链表">链表常用操作:遍历链表</h3>
+<p>将链表头赋值给临时变量，然后不断寻找下一个元素直到空。</p>
+<p>代码实现：</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Node</span><span class="o">*</span> <span class="n">i</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-&gt;</span> <span class="n">next</span><span class="p">;</span>
+    <span class="c1">//需要对链表元素进行的操作
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><h3 id="链表常用操作插入元素">链表常用操作:插入元素</h3>
+<p>找到要插入元素的位置，一般是记录前一个元素。<br>
+重新设置插入位置两边的元素和插入元素的关系。</p>
+<p>代码实现：</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//在元素p后面插入元素i
+</span><span class="c1"></span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="n">p</span> <span class="o">-&gt;</span> <span class="n">next</span><span class="p">;</span>
+<span class="n">i</span> <span class="o">-&gt;</span> <span class="n">prev</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">p</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">-&gt;</span> <span class="n">prev</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">p</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+</code></pre></div><p>注意:</p>
+<blockquote>
+<p>1.修改关系的顺序.</p>
+<p>2.特判插入链表头的情况。</p>
+</blockquote>
+<h3 id="链表常用操作删除元素">链表常用操作:删除元素</h3>
+<p>首先，找到要删除的元素。</p>
+<p>重新设置该元素的前后元素之间的关系，并根据需要释放元素。
+代码实现：</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">i</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">-&gt;</span> <span class="n">prev</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-&gt;</span> <span class="n">prev</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">prev</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">i</span> <span class="o">-&gt;</span> <span class="n">prev</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-&gt;</span> <span class="n">next</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">delete</span> <span class="n">i</span><span class="p">;</span>
+</code></pre></div><p>注意:</p>
+<blockquote>
+<p>如果有变量用来记录链表头，头被删除时要记得更新。</p>
+<p>链表尾同理。</p>
+</blockquote>
+<h3 id="链表-qa">链表 Q&amp;A</h3>
+<p><strong>Q：</strong> 单向链表可以进行删除元素操作吗?</p>
+<p><strong>A：</strong> 可以。通过预判下一个元素的方式，找到要删除元素的上一个元素，再更新下一个元素。</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">if</span> <span class="p">(</span><span class="n">pr</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">pr</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="n">pr</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">-&gt;</span> <span class="n">next</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>当然，还是要特判删除链表头的情况。</p>
+<p><strong>Q：</strong> 还有别的方式可以用来实现链表吗?</p>
+<p><strong>A：</strong> 通常情况下，使用数组来实现链表会更加简便。</p>
+<p>给每个元素一个编号(地址)，以代替指针的引用。</p>
+<p>为了记录每个元素的属性，可以使用结构体、二维数组或者多个数组。</p>
+<p><strong>Q：</strong> 用数组实现链表有哪些缺点?</p>
+<p><strong>A：</strong> 1.数组必须一次性初始化，并且长度固定。2.删除元素不会真正的释放空间。</p>
+<h2 id="队列">队列</h2>
+<p>从严格意义上来说，队列是一种特殊的链表，只支持添加队列尾元素和删除队列头元素两种操作。</p>
+<p>或者说，队列是链表的子集。</p>
+<h3 id="队列常用操作从队列尾部添加元素">队列常用操作:从队列尾部添加元素</h3>
+<p>创建一个新元素，将队尾元素的下一个元素指向新元素。</p>
+<p>将队尾移动到新元素。</p>
+<p>代码实现：</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Node</span><span class="o">*</span> <span class="n">newTail</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="p">();</span>
+<span class="n">tail</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="n">newTail</span><span class="p">;</span>
+<span class="n">tail</span> <span class="o">=</span> <span class="n">newTail</span><span class="p">;</span>
+</code></pre></div><h3 id="队列常用操作从队列头部删除元素">队列常用操作:从队列头部删除元素</h3>
+<p>记录队头元素。</p>
+<p>将队头元素移动到它的下一个元素。根据需要释放旧的队头元素。</p>
+<p>代码实现：</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Node</span><span class="o">*</span> <span class="n">oldHead</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">head</span> <span class="o">-&gt;</span> <span class="n">next</span><span class="p">;</span>
+<span class="n">oldHead</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</code></pre></div><p>注意：</p>
+<blockquote>
+<p>还要特判队列为空的情况。</p>
+</blockquote>
+<h3 id="数组一种特殊的队列">数组:一种特殊的队列</h3>
+<p>用两个整数表示数组的下标，作为队头和队尾的指针。</p>
+<p>删除元素则将队头指针+1，添加元素则将队尾指针+1。</p>
+<p>队头指针超过的队尾指针表示队列为空。</p>
+<h3 id="循环队列循环重复利用被删除空间的数组队列">循环队列:循环重复利用被删除空间的数组队列</h3>
+<p>移动指针后如果超出了数组长度，则重置为0。</p>
+<p>当尾指针追赶上头指针时，表示队列溢出。</p>
+<p>定义：</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">const</span> <span class="kt">int</span> <span class="n">LENGTH</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="n">Node</span><span class="o">*</span> <span class="n">queue</span><span class="p">[</span><span class="n">LENGTH</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">head</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tile</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div><p>添加元素：</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">bool</span> <span class="nf">push</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">head</span> <span class="o">!=</span> <span class="p">(</span><span class="n">tail</span> <span class="o">+</span> <span class="mi">2</span><span class="p">))</span> <span class="p">{</span> <span class="c1">// 判断满。 
+</span><span class="c1"></span>        <span class="n">tail</span> <span class="o">=</span> <span class="p">(</span><span class="n">tail</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">LENGTH</span><span class="p">;</span> 
+        <span class="n">queue</span><span class="p">[</span><span class="n">tail</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>删除元素：</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Node</span><span class="o">*</span> <span class="nf">pop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">head</span> <span class="o">!=</span> <span class="p">(</span><span class="n">tail</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span> <span class="c1">// 判断空。 
+</span><span class="c1"></span>        <span class="n">Node</span><span class="o">*</span> <span class="n">h</span> <span class="o">=</span> <span class="n">queue</span><span class="p">[</span><span class="n">head</span><span class="p">];</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="p">(</span><span class="n">head</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">LENGTH</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">h</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="队列-qa">队列 Q&amp;A</h3>
+<p><strong>Q：</strong> 队列是单向链表还是双向链表?</p>
+<p><strong>A：</strong> 使用单向链表足以支持队列的操作。</p>
+<p><strong>Q：</strong> 如果是双向队列，需要额外增加哪些操作?</p>
+<p><strong>A：</strong> 添加时要设置新元素的前一个元素，删除时要清空新队头的前一个元素。</p>
+<p><strong>Q：</strong> 数组队列有哪些优点与缺点?</p>
+<p><strong>A：</strong> 优点：队列不需要删除中间元素，数组完全满足队列的操作要求。</p>
+<p>缺点：删除掉的空间无法被重复利用。</p>
+<p><strong>Q：</strong> 如何区分循环队列是满还是空?</p>
+<p><strong>A：</strong> 有两种方案：</p>
+<blockquote>
+<p>1.用一个额外的变量记录队列的元素个数。</p>
+<p>2.将实际队列的容量变为数组长度-1，让队列空和满时的队尾指针在不同的位置。</p>
+</blockquote>
+<p>本文代码采用的是第二种方案</p>
+<h2 id="栈">栈</h2>
+<p>从严格意义上来说栈是一种特殊的链表，只支持添加栈尾元素和删除栈尾元素两种操作。</p>
+<p>或者说，栈是链表的子集。</p>
+<h3 id="栈常用操作从栈尾部添加元素">栈常用操作:从栈尾部添加元素</h3>
+<p>1.创建一个新元素。<br>
+2.将新元素的上一个元素指向栈尾元素。<br>
+3.将栈尾移动到新元素。</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Node</span><span class="o">*</span> <span class="n">newTail</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="p">();</span>
+<span class="n">newTail</span> <span class="o">-&gt;</span> <span class="n">prev</span> <span class="o">=</span> <span class="n">tail</span><span class="p">;</span>
+<span class="n">tail</span> <span class="o">=</span> <span class="n">newTail</span><span class="p">;</span>
+</code></pre></div><p>注意：还要特判栈为空的情况。</p>
+<h3 id="栈常用操作从栈尾部删除元素">栈常用操作:从栈尾部删除元素</h3>
+<p>1.记录栈尾元素。<br>
+2.将栈尾元素移动到它的上一个元素。<br>
+3.将旧栈尾元素的上一个元素置空。根据需要释放旧的栈尾元素。</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Node</span><span class="o">*</span> <span class="n">oldTail</span> <span class="o">=</span> <span class="n">tail</span><span class="p">;</span>
+<span class="n">tail</span> <span class="o">=</span> <span class="n">tail</span> <span class="o">-&gt;</span> <span class="n">prev</span><span class="p">;</span>
+<span class="n">oldTail</span> <span class="o">-&gt;</span> <span class="n">prev</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</code></pre></div><p>注意：还要特判栈为空的情况。</p>
+<h3 id="数组一种特殊的栈">数组:一种特殊的栈</h3>
+<p>用一个整数表示数组的下标，作为栈尾的指针。</p>
+<p>添加元素则将栈尾指针+1，删除元素则将栈尾指针-1。</p>
+<p>栈尾指针小于栈头元素的下标则表示栈为空。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+    integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"
+    integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"
+    crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+    integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
+    onload="StackLaTeX()"></script>
+
+<script>
+    function StackLaTeX() {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });
+    }
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">相关文章</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/splay%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Splay学习笔记</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/ac%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AC自动机学习笔记</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%87%B8%E5%8C%85/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">计算几何：凸包</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "sophon-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 Sophonの博客
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.0.1">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+            </main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"
+    integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin="anonymous"></script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
