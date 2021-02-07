@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Sophonの博客</title>
-        <link>https://example.com/</link>
+        <link>https://blog.sophonci117.me/</link>
         <description>Recent content on Sophonの博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sat, 02 Jan 2021 09:13:28 +0000</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 02 Jan 2021 09:13:28 +0000</lastBuildDate><atom:link href="https://blog.sophonci117.me/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>「SCOI2009」windy 数</title>
-        <link>https://example.com/post/scoi2009windy-%E6%95%B0/</link>
+        <link>https://blog.sophonci117.me/post/scoi2009windy-%E6%95%B0/</link>
         <pubDate>Sat, 02 Jan 2021 09:13:28 +0000</pubDate>
         
-        <guid>https://example.com/post/scoi2009windy-%E6%95%B0/</guid>
+        <guid>https://blog.sophonci117.me/post/scoi2009windy-%E6%95%B0/</guid>
         <description>&lt;h2 id=&#34;题意简述&#34;&gt;题意简述&lt;/h2&gt;
 &lt;p&gt;不含前导零且相邻两个数字之差至少为 $2$ 的正整数被称为 windy 数。windy 想知道，在 $a$ 和 $b$ 之间，包括 $a$ 和 $b$ ，总共有多少个 windy 数？&lt;/p&gt;
 &lt;h2 id=&#34;题目分析&#34;&gt;题目分析&lt;/h2&gt;
@@ -93,10 +93,10 @@
         </item>
         <item>
         <title>题解「CF1200E」Compress Words</title>
-        <link>https://example.com/post/%E9%A2%98%E8%A7%A3cf1200ecompress-words/</link>
+        <link>https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3cf1200ecompress-words/</link>
         <pubDate>Fri, 01 Jan 2021 23:53:05 +0000</pubDate>
         
-        <guid>https://example.com/post/%E9%A2%98%E8%A7%A3cf1200ecompress-words/</guid>
+        <guid>https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3cf1200ecompress-words/</guid>
         <description>&lt;h2 id=&#34;题意简述&#34;&gt;题意简述&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -159,10 +159,10 @@
         </item>
         <item>
         <title>题解「CF161D」Distance in Tree</title>
-        <link>https://example.com/post/%E9%A2%98%E8%A7%A3cf161ddistance-in-tree/</link>
+        <link>https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3cf161ddistance-in-tree/</link>
         <pubDate>Fri, 01 Jan 2021 20:01:39 +0000</pubDate>
         
-        <guid>https://example.com/post/%E9%A2%98%E8%A7%A3cf161ddistance-in-tree/</guid>
+        <guid>https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3cf161ddistance-in-tree/</guid>
         <description>&lt;h2 id=&#34;题意简述&#34;&gt;题意简述&lt;/h2&gt;
 &lt;p&gt;给定一颗$N$个节点的树，求树上长度为$K$的路径的数量&lt;/p&gt;
 &lt;h3 id=&#34;输入&#34;&gt;输入&lt;/h3&gt;
@@ -230,10 +230,10 @@
         </item>
         <item>
         <title>【TJOI2013】单词-题解</title>
-        <link>https://example.com/post/tjoi2013%E5%8D%95%E8%AF%8D-%E9%A2%98%E8%A7%A3/</link>
+        <link>https://blog.sophonci117.me/post/tjoi2013%E5%8D%95%E8%AF%8D-%E9%A2%98%E8%A7%A3/</link>
         <pubDate>Fri, 01 Jan 2021 13:08:24 +0000</pubDate>
         
-        <guid>https://example.com/post/tjoi2013%E5%8D%95%E8%AF%8D-%E9%A2%98%E8%A7%A3/</guid>
+        <guid>https://blog.sophonci117.me/post/tjoi2013%E5%8D%95%E8%AF%8D-%E9%A2%98%E8%A7%A3/</guid>
         <description>&lt;h2 id=&#34;题意简述&#34;&gt;题意简述&lt;/h2&gt;
 &lt;p&gt;给出$n$个单词，统计每个单词在全体单词（包括自身）中的出现次数&lt;/p&gt;
 &lt;h2 id=&#34;题目分析&#34;&gt;题目分析&lt;/h2&gt;
@@ -322,10 +322,10 @@
         </item>
         <item>
         <title>AC自动机学习笔记</title>
-        <link>https://example.com/post/ac%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+        <link>https://blog.sophonci117.me/post/ac%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
         <pubDate>Fri, 01 Jan 2021 00:24:39 +0000</pubDate>
         
-        <guid>https://example.com/post/ac%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+        <guid>https://blog.sophonci117.me/post/ac%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
         <description>&lt;p&gt;&lt;del&gt;再不更新这里都长草了&lt;/del&gt;&lt;/p&gt;
 &lt;h2 id=&#34;前置知识&#34;&gt;前置知识&lt;/h2&gt;
 &lt;ul&gt;
@@ -413,10 +413,10 @@
         </item>
         <item>
         <title>【开新坑】《南极狂想曲》</title>
-        <link>https://example.com/post/%E5%BC%80%E6%96%B0%E5%9D%91%E5%8D%97%E6%9E%81%E7%8B%82%E6%83%B3%E6%9B%B2/</link>
+        <link>https://blog.sophonci117.me/post/%E5%BC%80%E6%96%B0%E5%9D%91%E5%8D%97%E6%9E%81%E7%8B%82%E6%83%B3%E6%9B%B2/</link>
         <pubDate>Wed, 12 Aug 2020 16:34:58 +0000</pubDate>
         
-        <guid>https://example.com/post/%E5%BC%80%E6%96%B0%E5%9D%91%E5%8D%97%E6%9E%81%E7%8B%82%E6%83%B3%E6%9B%B2/</guid>
+        <guid>https://blog.sophonci117.me/post/%E5%BC%80%E6%96%B0%E5%9D%91%E5%8D%97%E6%9E%81%E7%8B%82%E6%83%B3%E6%9B%B2/</guid>
         <description>&lt;p&gt;&lt;strong&gt;郑重声明：本作品为奇幻小说，不涉及也不参与任何现实中的意识形态纠纷。对于作品中的任何魔怔设定，本人一概不负任何责任。&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;起源&#34;&gt;起源&lt;/h2&gt;
 &lt;p&gt;这个系列来源于@&lt;a class=&#34;link&#34; href=&#34;https://www.luogu.com.cn/user/251723&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -489,10 +489,10 @@
         </item>
         <item>
         <title>1977年欧洲局势（小说世界线）</title>
-        <link>https://example.com/post/1977%E5%B9%B4%E6%AC%A7%E6%B4%B2%E5%B1%80%E5%8A%BF%E5%B0%8F%E8%AF%B4%E4%B8%96%E7%95%8C%E7%BA%BF/</link>
+        <link>https://blog.sophonci117.me/post/1977%E5%B9%B4%E6%AC%A7%E6%B4%B2%E5%B1%80%E5%8A%BF%E5%B0%8F%E8%AF%B4%E4%B8%96%E7%95%8C%E7%BA%BF/</link>
         <pubDate>Wed, 12 Aug 2020 16:29:58 +0000</pubDate>
         
-        <guid>https://example.com/post/1977%E5%B9%B4%E6%AC%A7%E6%B4%B2%E5%B1%80%E5%8A%BF%E5%B0%8F%E8%AF%B4%E4%B8%96%E7%95%8C%E7%BA%BF/</guid>
+        <guid>https://blog.sophonci117.me/post/1977%E5%B9%B4%E6%AC%A7%E6%B4%B2%E5%B1%80%E5%8A%BF%E5%B0%8F%E8%AF%B4%E4%B8%96%E7%95%8C%E7%BA%BF/</guid>
         <description>&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/HeliumOI/imghost@latest/History_End_Europe_1977.jpg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;p&gt;图片加载可能要等一会……&lt;/p&gt;
 &lt;p&gt;图片很大有3.5M，大家耐心点&lt;/p&gt;
@@ -546,10 +546,10 @@
         </item>
         <item>
         <title>【架空历史】【短篇】伏尔加格勒的夜色</title>
-        <link>https://example.com/post/%E6%9E%B6%E7%A9%BA%E5%8E%86%E5%8F%B2%E7%9F%AD%E7%AF%87%E4%BC%8F%E5%B0%94%E5%8A%A0%E6%A0%BC%E5%8B%92%E7%9A%84%E5%A4%9C%E8%89%B2/</link>
+        <link>https://blog.sophonci117.me/post/%E6%9E%B6%E7%A9%BA%E5%8E%86%E5%8F%B2%E7%9F%AD%E7%AF%87%E4%BC%8F%E5%B0%94%E5%8A%A0%E6%A0%BC%E5%8B%92%E7%9A%84%E5%A4%9C%E8%89%B2/</link>
         <pubDate>Mon, 10 Aug 2020 23:28:39 +0000</pubDate>
         
-        <guid>https://example.com/post/%E6%9E%B6%E7%A9%BA%E5%8E%86%E5%8F%B2%E7%9F%AD%E7%AF%87%E4%BC%8F%E5%B0%94%E5%8A%A0%E6%A0%BC%E5%8B%92%E7%9A%84%E5%A4%9C%E8%89%B2/</guid>
+        <guid>https://blog.sophonci117.me/post/%E6%9E%B6%E7%A9%BA%E5%8E%86%E5%8F%B2%E7%9F%AD%E7%AF%87%E4%BC%8F%E5%B0%94%E5%8A%A0%E6%A0%BC%E5%8B%92%E7%9A%84%E5%A4%9C%E8%89%B2/</guid>
         <description>&lt;p&gt;1971年7月，伏尔加格勒&lt;/p&gt;
 &lt;p&gt;夜深了。&lt;/p&gt;
 &lt;p&gt;伏尔加格勒的月光从未如此清冷，仿佛坟墓中散发出的荧光，喃喃着不知是谁的坟墓主人的姓名。星星死气沉沉地排列在月亮周围，如同穿着黑衣一言不发的随从。假若一个虔诚的基督教徒同时看到天上与地上的情景，一定会想起《圣经》中关于审判日的描写，月亮与星星是于天中排列的天使，将要审判世间的一切罪恶。&lt;/p&gt;
@@ -586,10 +586,10 @@
         </item>
         <item>
         <title>Hexo踩坑记录（一）</title>
-        <link>https://example.com/post/hexo%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E4%B8%80/</link>
+        <link>https://blog.sophonci117.me/post/hexo%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E4%B8%80/</link>
         <pubDate>Mon, 10 Aug 2020 15:39:53 +0000</pubDate>
         
-        <guid>https://example.com/post/hexo%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E4%B8%80/</guid>
+        <guid>https://blog.sophonci117.me/post/hexo%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E4%B8%80/</guid>
         <description>&lt;p&gt;最近几天翻找自己的学习笔记时，忽然发现自己的Hexo博客已经长了几个月的草，于是一时兴起又更新了一下Hexo博客，但在构建博客时出现了问题：&lt;/p&gt;
 &lt;h2 id=&#34;hexo与nodejs的兼容性&#34;&gt;Hexo与Node.js的兼容性&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;mike@MacBook-Pro ~/hexo $ hexo g                                            [15:13:57]
@@ -805,10 +805,10 @@ added 71 packages from 33 contributors in 12.939s
         </item>
         <item>
         <title>「习作」《红星照耀中国》读书笔记</title>
-        <link>https://example.com/post/%E4%B9%A0%E4%BD%9C%E7%BA%A2%E6%98%9F%E7%85%A7%E8%80%80%E4%B8%AD%E5%9B%BD%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+        <link>https://blog.sophonci117.me/post/%E4%B9%A0%E4%BD%9C%E7%BA%A2%E6%98%9F%E7%85%A7%E8%80%80%E4%B8%AD%E5%9B%BD%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
         <pubDate>Thu, 06 Aug 2020 00:02:52 +0000</pubDate>
         
-        <guid>https://example.com/post/%E4%B9%A0%E4%BD%9C%E7%BA%A2%E6%98%9F%E7%85%A7%E8%80%80%E4%B8%AD%E5%9B%BD%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+        <guid>https://blog.sophonci117.me/post/%E4%B9%A0%E4%BD%9C%E7%BA%A2%E6%98%9F%E7%85%A7%E8%80%80%E4%B8%AD%E5%9B%BD%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
         <description>&lt;p&gt;　　每一个中国人都知道，自己祖国的全名是“中华人民共和国”，其中的“人民”昭示着这是一个社会主义的国家。但或许有人不知道的是，社会主义的火种，是如何在这片几代人之前还是半封建半殖民地的国家扎下根的？&lt;/p&gt;
 &lt;p&gt;　　在今天，离我们那个时代或许已经十分遥远，但这并不能作为我们忘却斗争精神的理由。须知，我们今日的昌盛，不是资本家们施舍的，而是无数人民英雄们抛头颅、洒热血换得的！我们难道能因为出生在一个所谓“岁月静好”的年代，就忘记了革命年代的理想与信念吗？不！我们永不忘记！&lt;/p&gt;
 &lt;p&gt;　　《红星照耀中国》最早出版于1937年。&lt;/p&gt;
@@ -849,10 +849,10 @@ added 71 packages from 33 contributors in 12.939s
         </item>
         <item>
         <title>题解P3197 [HNOI2008]越狱</title>
-        <link>https://example.com/post/%E9%A2%98%E8%A7%A3p3197-hnoi2008%E8%B6%8A%E7%8B%B1/</link>
+        <link>https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3p3197-hnoi2008%E8%B6%8A%E7%8B%B1/</link>
         <pubDate>Fri, 14 Feb 2020 17:16:00 +0000</pubDate>
         
-        <guid>https://example.com/post/%E9%A2%98%E8%A7%A3p3197-hnoi2008%E8%B6%8A%E7%8B%B1/</guid>
+        <guid>https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3p3197-hnoi2008%E8%B6%8A%E7%8B%B1/</guid>
         <description>&lt;h1 id=&#34;思路&#34;&gt;思路&lt;/h1&gt;
 &lt;p&gt;这道题可以从反面去考虑，即：先计算出不可能发生越狱的状态总数，并用它减去总状态数即为这道题要求的答案。&lt;/p&gt;
 &lt;p&gt;首先，在不失一般性的情况下，不妨设第一个房间里的犯人的宗教信仰为$p$，则第二个房间里的烦人的宗教信仰不能为$p$，因此第二个房间里的犯人的宗教信仰共有$(m - 1)$种可能性。同理，第三个房间里的犯人的宗教信仰也共有$(m - 1)$种可能性……故第二个到第$n$个房间里的烦人的宗教信仰共有$(n - 1)^{(m - 1)}$种可能性。而第一个房间里的犯人的信仰有$n$种可能，故不可能发生越狱的状态总数为
@@ -891,10 +891,10 @@ $$n^m-n×(n - 1)^{(m - 1)}$$&lt;/p&gt;
         </item>
         <item>
         <title>题解 SP196 【MUSKET - Musketeers】</title>
-        <link>https://example.com/post/%E9%A2%98%E8%A7%A3-sp196-musket-musketeers/</link>
+        <link>https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3-sp196-musket-musketeers/</link>
         <pubDate>Mon, 29 Jul 2019 11:42:00 +0000</pubDate>
         
-        <guid>https://example.com/post/%E9%A2%98%E8%A7%A3-sp196-musket-musketeers/</guid>
+        <guid>https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3-sp196-musket-musketeers/</guid>
         <description>&lt;p&gt;在模拟赛中遇到了这道题。（后来才知道是SPOJ上的原题）&lt;/p&gt;
 &lt;p&gt;话不多说，开始动态规划三步走。$Let&amp;rsquo;s\ go!$&lt;/p&gt;
 &lt;h2 id=&#34;定义状态&#34;&gt;定义状态&lt;/h2&gt;
@@ -977,10 +977,10 @@ $$n^m-n×(n - 1)^{(m - 1)}$$&lt;/p&gt;
         </item>
         <item>
         <title>慢慢的，就没有了，就像从未存在过</title>
-        <link>https://example.com/post/%E6%85%A2%E6%85%A2%E7%9A%84%E5%B0%B1%E6%B2%A1%E6%9C%89%E4%BA%86%E5%B0%B1%E5%83%8F%E4%BB%8E%E6%9C%AA%E5%AD%98%E5%9C%A8%E8%BF%87/</link>
+        <link>https://blog.sophonci117.me/post/%E6%85%A2%E6%85%A2%E7%9A%84%E5%B0%B1%E6%B2%A1%E6%9C%89%E4%BA%86%E5%B0%B1%E5%83%8F%E4%BB%8E%E6%9C%AA%E5%AD%98%E5%9C%A8%E8%BF%87/</link>
         <pubDate>Tue, 02 Jul 2019 23:20:00 +0000</pubDate>
         
-        <guid>https://example.com/post/%E6%85%A2%E6%85%A2%E7%9A%84%E5%B0%B1%E6%B2%A1%E6%9C%89%E4%BA%86%E5%B0%B1%E5%83%8F%E4%BB%8E%E6%9C%AA%E5%AD%98%E5%9C%A8%E8%BF%87/</guid>
+        <guid>https://blog.sophonci117.me/post/%E6%85%A2%E6%85%A2%E7%9A%84%E5%B0%B1%E6%B2%A1%E6%9C%89%E4%BA%86%E5%B0%B1%E5%83%8F%E4%BB%8E%E6%9C%AA%E5%AD%98%E5%9C%A8%E8%BF%87/</guid>
         <description>&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;几年以前，我曾经嘲笑过某科技界大佬。当时他说：也许90后、95后会慢慢不知道谷歌是什么网站。&lt;/p&gt;
 &lt;p&gt;　　那一年，这对于我来说简直就是世界上最好笑的笑话。谷歌，全世界最卓越的互联网公司，活在互联网的一代中国人，会不知道他们的网站？&lt;/p&gt;
@@ -1014,10 +1014,10 @@ $$n^m-n×(n - 1)^{(m - 1)}$$&lt;/p&gt;
         </item>
         <item>
         <title>OIer&#39;s News 【创刊期】</title>
-        <link>https://example.com/post/oiers-news-%E5%88%9B%E5%88%8A%E6%9C%9F/</link>
+        <link>https://blog.sophonci117.me/post/oiers-news-%E5%88%9B%E5%88%8A%E6%9C%9F/</link>
         <pubDate>Thu, 27 Jun 2019 16:11:57 +0000</pubDate>
         
-        <guid>https://example.com/post/oiers-news-%E5%88%9B%E5%88%8A%E6%9C%9F/</guid>
+        <guid>https://blog.sophonci117.me/post/oiers-news-%E5%88%9B%E5%88%8A%E6%9C%9F/</guid>
         <description>&lt;h2 id=&#34;创刊期&#34;&gt;创刊期&lt;/h2&gt;
 &lt;h3 id=&#34;创刊期-1&#34;&gt;创刊期&lt;/h3&gt;
 &lt;p&gt;大家坚定一个信念吧:&lt;/p&gt;
@@ -1050,10 +1050,10 @@ $$n^m-n×(n - 1)^{(m - 1)}$$&lt;/p&gt;
         </item>
         <item>
         <title>写代码的小女孩</title>
-        <link>https://example.com/post/%E5%86%99%E4%BB%A3%E7%A0%81%E7%9A%84%E5%B0%8F%E5%A5%B3%E5%AD%A9/</link>
+        <link>https://blog.sophonci117.me/post/%E5%86%99%E4%BB%A3%E7%A0%81%E7%9A%84%E5%B0%8F%E5%A5%B3%E5%AD%A9/</link>
         <pubDate>Fri, 31 May 2019 00:02:57 +0000</pubDate>
         
-        <guid>https://example.com/post/%E5%86%99%E4%BB%A3%E7%A0%81%E7%9A%84%E5%B0%8F%E5%A5%B3%E5%AD%A9/</guid>
+        <guid>https://blog.sophonci117.me/post/%E5%86%99%E4%BB%A3%E7%A0%81%E7%9A%84%E5%B0%8F%E5%A5%B3%E5%AD%A9/</guid>
         <description>&lt;p&gt;　　天冷极了，下着雪，又快黑了。这是NOIP的前夜。在这又冷又黑的晚上，一个衣衫破烂的小女孩在机房敲着代码。她从班里逃出来的时候还拿着一本算导，但是有什么用呢？那是一本很破旧的书——那么大，一向是她妈妈垫桌角的。她默写SPFA的时候，年级主任突然冲进机房，吓得她把算导都丢掉了。书叫一个学数竞捡起来拿着跑了。他说，他可以用那本书当草纸，证明切比雪夫定理。&lt;/p&gt;
 &lt;p&gt;　　小女孩只好自己写二叉堆，一双小脚冻得红一块青一块的。她面前的草纸堆得满满的，上面全是DP转移方程。这一整天，没有一个OJ让她AC一道题，她已经交了32遍采药了。&lt;/p&gt;
 &lt;p&gt;　　可怜的小女孩！她又冷又饿，浑身战栗地写着二叉堆。CRT显示器发出的光落在她的枯黄的长头发上，那干枯的头发打成卷儿披在肩上，看上去就像二叉树，不过她没注意这些。每个显示器里都透出光来，机房里飘着一股CPU发糊的怪味，因为这是NOIP前夜——她可忘不了这个。&lt;/p&gt;
@@ -1069,10 +1069,10 @@ $$n^m-n×(n - 1)^{(m - 1)}$$&lt;/p&gt;
         </item>
         <item>
         <title>摘录自「SCP基金会」中的一些句子</title>
-        <link>https://example.com/post/%E6%91%98%E5%BD%95%E8%87%AAscp%E5%9F%BA%E9%87%91%E4%BC%9A%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8F%A5%E5%AD%90/</link>
+        <link>https://blog.sophonci117.me/post/%E6%91%98%E5%BD%95%E8%87%AAscp%E5%9F%BA%E9%87%91%E4%BC%9A%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8F%A5%E5%AD%90/</link>
         <pubDate>Tue, 28 May 2019 22:34:00 +0000</pubDate>
         
-        <guid>https://example.com/post/%E6%91%98%E5%BD%95%E8%87%AAscp%E5%9F%BA%E9%87%91%E4%BC%9A%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8F%A5%E5%AD%90/</guid>
+        <guid>https://blog.sophonci117.me/post/%E6%91%98%E5%BD%95%E8%87%AAscp%E5%9F%BA%E9%87%91%E4%BC%9A%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8F%A5%E5%AD%90/</guid>
         <description>&lt;blockquote&gt;
 &lt;p&gt;已死之人，向赴死者致敬。&lt;/p&gt;
 &lt;p&gt;我想要宪法赋予我的那个世界。&lt;/p&gt;
@@ -1098,10 +1098,10 @@ $$n^m-n×(n - 1)^{(m - 1)}$$&lt;/p&gt;
         </item>
         <item>
         <title>洛谷题解 P1226 【【模板】快速幂||取余运算】</title>
-        <link>https://example.com/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1226-%E6%A8%A1%E6%9D%BF%E5%BF%AB%E9%80%9F%E5%B9%82%E5%8F%96%E4%BD%99%E8%BF%90%E7%AE%97/</link>
+        <link>https://blog.sophonci117.me/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1226-%E6%A8%A1%E6%9D%BF%E5%BF%AB%E9%80%9F%E5%B9%82%E5%8F%96%E4%BD%99%E8%BF%90%E7%AE%97/</link>
         <pubDate>Tue, 30 Apr 2019 15:04:00 +0000</pubDate>
         
-        <guid>https://example.com/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1226-%E6%A8%A1%E6%9D%BF%E5%BF%AB%E9%80%9F%E5%B9%82%E5%8F%96%E4%BD%99%E8%BF%90%E7%AE%97/</guid>
+        <guid>https://blog.sophonci117.me/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1226-%E6%A8%A1%E6%9D%BF%E5%BF%AB%E9%80%9F%E5%B9%82%E5%8F%96%E4%BD%99%E8%BF%90%E7%AE%97/</guid>
         <description>&lt;h1 id=&#34;题目描述&#34;&gt;题目描述&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.luogu.org/problemnew/show/P1226&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;洛谷P1226&lt;/a&gt;&lt;/p&gt;
@@ -1123,10 +1123,10 @@ $$n^m-n×(n - 1)^{(m - 1)}$$&lt;/p&gt;
         </item>
         <item>
         <title>「文章转载」赛博空间独立宣言</title>
-        <link>https://example.com/post/%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD%E8%B5%9B%E5%8D%9A%E7%A9%BA%E9%97%B4%E7%8B%AC%E7%AB%8B%E5%AE%A3%E8%A8%80/</link>
+        <link>https://blog.sophonci117.me/post/%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD%E8%B5%9B%E5%8D%9A%E7%A9%BA%E9%97%B4%E7%8B%AC%E7%AB%8B%E5%AE%A3%E8%A8%80/</link>
         <pubDate>Fri, 26 Apr 2019 17:27:15 +0000</pubDate>
         
-        <guid>https://example.com/post/%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD%E8%B5%9B%E5%8D%9A%E7%A9%BA%E9%97%B4%E7%8B%AC%E7%AB%8B%E5%AE%A3%E8%A8%80/</guid>
+        <guid>https://blog.sophonci117.me/post/%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD%E8%B5%9B%E5%8D%9A%E7%A9%BA%E9%97%B4%E7%8B%AC%E7%AB%8B%E5%AE%A3%E8%A8%80/</guid>
         <description>&lt;p&gt;　　工业世界的政府，你们这些肉体和钢铁的巨人，令人厌倦，我来自赛博空间，思维的新家园。以未来的名义，我要求属于过去的你们，不要干涉我们的自由。我们不欢迎你们，我们聚集的地方，你们不享有主权。&lt;/p&gt;
 &lt;p&gt;　　我们没有民选政府，将来也不会有，所以我现在跟你们讲话，运用的不过是自由言说的权威。我宣布，我们建立的全球社会空间，自然地不受你们强加给我们的专制的约束。你们没有任何道德权利统治我们，你们也没有任何强制方法，让我们真的有理由恐惧。&lt;/p&gt;
 &lt;p&gt;　　政府的正当权利来自被统治者的同意。你们从来没有要求过我们的同意，你们也没有得到我们的同意。我们没有邀请你来，你们不了解我们，不了解我们的世界。赛博空间不在你们的疆界之内。不要认为你们可以建造这样一个疆界，好像建造一座公共建筑。你们没有这个能力。这个疆界是一件自然行为，它将从我们的集体行动中生发出来。&lt;/p&gt;
@@ -1141,10 +1141,10 @@ $$n^m-n×(n - 1)^{(m - 1)}$$&lt;/p&gt;
         </item>
         <item>
         <title>DNS-over-HTTPS(DoH)简析与配置</title>
-        <link>https://example.com/post/dns-over-httpsdoh%E7%AE%80%E6%9E%90%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+        <link>https://blog.sophonci117.me/post/dns-over-httpsdoh%E7%AE%80%E6%9E%90%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
         <pubDate>Mon, 15 Apr 2019 21:45:00 +0000</pubDate>
         
-        <guid>https://example.com/post/dns-over-httpsdoh%E7%AE%80%E6%9E%90%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+        <guid>https://blog.sophonci117.me/post/dns-over-httpsdoh%E7%AE%80%E6%9E%90%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
         <description>&lt;p&gt;本文同步发布于 &lt;a class=&#34;link&#34; href=&#34;https://keepthethink.github.io/archives/2251452003/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Heliumの博客&lt;/a&gt;，到我的博客阅读体验更佳QwQ&lt;/p&gt;
 &lt;h1 id=&#34;dns是什么&#34;&gt;DNS是什么&lt;/h1&gt;
@@ -1286,10 +1286,10 @@ www.google.com.		66	IN	A	216.58.194.196
         </item>
         <item>
         <title>「文章转载」他译作“维基”的那个网站消失在竹幕后</title>
-        <link>https://example.com/post/%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD%E4%BB%96%E8%AF%91%E4%BD%9C%E7%BB%B4%E5%9F%BA%E7%9A%84%E9%82%A3%E4%B8%AA%E7%BD%91%E7%AB%99%E6%B6%88%E5%A4%B1%E5%9C%A8%E7%AB%B9%E5%B9%95%E5%90%8E/</link>
+        <link>https://blog.sophonci117.me/post/%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD%E4%BB%96%E8%AF%91%E4%BD%9C%E7%BB%B4%E5%9F%BA%E7%9A%84%E9%82%A3%E4%B8%AA%E7%BD%91%E7%AB%99%E6%B6%88%E5%A4%B1%E5%9C%A8%E7%AB%B9%E5%B9%95%E5%90%8E/</link>
         <pubDate>Mon, 15 Apr 2019 15:24:00 +0000</pubDate>
         
-        <guid>https://example.com/post/%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD%E4%BB%96%E8%AF%91%E4%BD%9C%E7%BB%B4%E5%9F%BA%E7%9A%84%E9%82%A3%E4%B8%AA%E7%BD%91%E7%AB%99%E6%B6%88%E5%A4%B1%E5%9C%A8%E7%AB%B9%E5%B9%95%E5%90%8E/</guid>
+        <guid>https://blog.sophonci117.me/post/%E6%96%87%E7%AB%A0%E8%BD%AC%E8%BD%BD%E4%BB%96%E8%AF%91%E4%BD%9C%E7%BB%B4%E5%9F%BA%E7%9A%84%E9%82%A3%E4%B8%AA%E7%BD%91%E7%AB%99%E6%B6%88%E5%A4%B1%E5%9C%A8%E7%AB%B9%E5%B9%95%E5%90%8E/</guid>
         <description>&lt;blockquote&gt;
 &lt;p&gt;本文放弃一切经济权利，各网站、公号和其他各类载体可在保持原文完整的基础上自由转载。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1325,10 +1325,10 @@ www.google.com.		66	IN	A	216.58.194.196
         </item>
         <item>
         <title>洛谷题解 P1003 【铺地毯】</title>
-        <link>https://example.com/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1003-%E9%93%BA%E5%9C%B0%E6%AF%AF/</link>
+        <link>https://blog.sophonci117.me/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1003-%E9%93%BA%E5%9C%B0%E6%AF%AF/</link>
         <pubDate>Sat, 13 Apr 2019 09:50:00 +0000</pubDate>
         
-        <guid>https://example.com/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1003-%E9%93%BA%E5%9C%B0%E6%AF%AF/</guid>
+        <guid>https://blog.sophonci117.me/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1003-%E9%93%BA%E5%9C%B0%E6%AF%AF/</guid>
         <description>&lt;h1 id=&#34;说明&#34;&gt;说明&lt;/h1&gt;
 &lt;p&gt;看标签
 &lt;strong&gt;枚举，模拟，暴力&lt;/strong&gt;。&lt;/p&gt;
@@ -1368,10 +1368,10 @@ www.google.com.		66	IN	A	216.58.194.196
         </item>
         <item>
         <title>人类首张黑洞照片</title>
-        <link>https://example.com/post/%E4%BA%BA%E7%B1%BB%E9%A6%96%E5%BC%A0%E9%BB%91%E6%B4%9E%E7%85%A7%E7%89%87/</link>
+        <link>https://blog.sophonci117.me/post/%E4%BA%BA%E7%B1%BB%E9%A6%96%E5%BC%A0%E9%BB%91%E6%B4%9E%E7%85%A7%E7%89%87/</link>
         <pubDate>Sat, 13 Apr 2019 09:39:00 +0000</pubDate>
         
-        <guid>https://example.com/post/%E4%BA%BA%E7%B1%BB%E9%A6%96%E5%BC%A0%E9%BB%91%E6%B4%9E%E7%85%A7%E7%89%87/</guid>
+        <guid>https://blog.sophonci117.me/post/%E4%BA%BA%E7%B1%BB%E9%A6%96%E5%BC%A0%E9%BB%91%E6%B4%9E%E7%85%A7%E7%89%87/</guid>
         <description>&lt;p&gt;2019年4月10日9：00，人类首张对黑洞进行直接拍摄的照片发布。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://i.loli.net/2019/04/12/5cb090dea8dcc.jpg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;p&gt;这张照片可能并不符合许多人想象中常见的“漩涡”形象，但这是最符合目前学术界公认理论的形象。爱因斯坦，史瓦西，克尔，霍金等历代科学家的理论终于在这一天得到了论证，只不过他们都没有活到看到他们预言之物终于被光学设备记录到的那一天。&lt;/p&gt;
@@ -1380,10 +1380,10 @@ www.google.com.		66	IN	A	216.58.194.196
         </item>
         <item>
         <title>洛谷题解 P1002 【过河卒】</title>
-        <link>https://example.com/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1002-%E8%BF%87%E6%B2%B3%E5%8D%92/</link>
+        <link>https://blog.sophonci117.me/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1002-%E8%BF%87%E6%B2%B3%E5%8D%92/</link>
         <pubDate>Fri, 12 Apr 2019 20:34:00 +0000</pubDate>
         
-        <guid>https://example.com/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1002-%E8%BF%87%E6%B2%B3%E5%8D%92/</guid>
+        <guid>https://blog.sophonci117.me/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1002-%E8%BF%87%E6%B2%B3%E5%8D%92/</guid>
         <description>&lt;h1 id=&#34;题目描述&#34;&gt;题目描述&lt;/h1&gt;
 &lt;p&gt;棋盘上$A$点有一个过河卒，需要走到目标$B$点。卒行走的规则：可以向下、或者向右。同时在棋盘上$C$点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。&lt;/p&gt;
 &lt;p&gt;棋盘用坐标表示，$A$点$(0, 0)$、$B$点$(n, m)$($n$, $m$为不超过$20$的整数)，同样马的位置坐标是需要给出的。&lt;/p&gt;
@@ -1449,10 +1449,10 @@ www.google.com.		66	IN	A	216.58.194.196
         </item>
         <item>
         <title>计算几何：凸包</title>
-        <link>https://example.com/post/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%87%B8%E5%8C%85/</link>
+        <link>https://blog.sophonci117.me/post/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%87%B8%E5%8C%85/</link>
         <pubDate>Fri, 05 Apr 2019 15:33:00 +0000</pubDate>
         
-        <guid>https://example.com/post/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%87%B8%E5%8C%85/</guid>
+        <guid>https://blog.sophonci117.me/post/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%87%B8%E5%8C%85/</guid>
         <description>&lt;p&gt;对于初学计算几何的OIer来说，Graham算法是个不错的凸包算法。Graham算法相比极角排序法来说，更为直观也更容易理解。&lt;/p&gt;
 &lt;h1 id=&#34;数据定义&#34;&gt;数据定义&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Point&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -1563,10 +1563,10 @@ www.google.com.		66	IN	A	216.58.194.196
         </item>
         <item>
         <title>Splay学习笔记</title>
-        <link>https://example.com/post/splay%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+        <link>https://blog.sophonci117.me/post/splay%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
         <pubDate>Thu, 28 Mar 2019 20:59:00 +0000</pubDate>
         
-        <guid>https://example.com/post/splay%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+        <guid>https://blog.sophonci117.me/post/splay%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
         <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;伸展树（英语：Splay Tree）是一种能够&lt;strong&gt;自我平衡&lt;/strong&gt;的二叉查找树，它能在均摊O(log n)的时间内完成基于伸展（Splay）操作的插入、查找、修改和删除操作。&lt;/p&gt;
 &lt;p&gt;众所周知，普通BST在进行各种操作时很容易因为左子树与右子树高度差的问题导致时间复杂度退化为O(n)，Splay为了避免这个问题，使用了一种叫做“伸展”的操作来使左右子树平衡，在后面会介绍。&lt;/p&gt;
@@ -1772,10 +1772,10 @@ www.google.com.		66	IN	A	216.58.194.196
         </item>
         <item>
         <title>一维数据结构学习笔记</title>
-        <link>https://example.com/post/%E4%B8%80%E7%BB%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+        <link>https://blog.sophonci117.me/post/%E4%B8%80%E7%BB%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
         <pubDate>Fri, 15 Mar 2019 10:15:00 +0000</pubDate>
         
-        <guid>https://example.com/post/%E4%B8%80%E7%BB%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+        <guid>https://blog.sophonci117.me/post/%E4%B8%80%E7%BB%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
         <description>&lt;h1 id=&#34;一维数据结构学习笔记&#34;&gt;一维数据结构学习笔记&lt;/h1&gt;
 &lt;h2 id=&#34;链表&#34;&gt;链表&lt;/h2&gt;
 &lt;p&gt;链表:按顺序记录元素的线性数据结构。&lt;/p&gt;
@@ -1949,10 +1949,10 @@ www.google.com.		66	IN	A	216.58.194.196
         </item>
         <item>
         <title>洛谷题解P1119【灾后重建】</title>
-        <link>https://example.com/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3p1119%E7%81%BE%E5%90%8E%E9%87%8D%E5%BB%BA/</link>
+        <link>https://blog.sophonci117.me/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3p1119%E7%81%BE%E5%90%8E%E9%87%8D%E5%BB%BA/</link>
         <pubDate>Sat, 09 Mar 2019 19:19:00 +0000</pubDate>
         
-        <guid>https://example.com/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3p1119%E7%81%BE%E5%90%8E%E9%87%8D%E5%BB%BA/</guid>
+        <guid>https://blog.sophonci117.me/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3p1119%E7%81%BE%E5%90%8E%E9%87%8D%E5%BB%BA/</guid>
         <description>&lt;h1 id=&#34;题目背景&#34;&gt;题目背景&lt;/h1&gt;
 &lt;p&gt;$B$地区在地震过后，所有村庄都造成了一定的损毁，而这场地震却没对公路造成什么影响。但是在村庄重建好之前，所有与未重建完成的村庄的公路均无法通车。换句话说，只有连接着两个重建完成的村庄的公路才能通车，只能到达重建完成的村庄。&lt;/p&gt;
 &lt;h1 id=&#34;题目描述&#34;&gt;题目描述&lt;/h1&gt;
@@ -2088,10 +2088,10 @@ www.google.com.		66	IN	A	216.58.194.196
         </item>
         <item>
         <title>NOIP2018游记</title>
-        <link>https://example.com/post/noip2018%E6%B8%B8%E8%AE%B0/</link>
+        <link>https://blog.sophonci117.me/post/noip2018%E6%B8%B8%E8%AE%B0/</link>
         <pubDate>Fri, 08 Mar 2019 22:39:00 +0000</pubDate>
         
-        <guid>https://example.com/post/noip2018%E6%B8%B8%E8%AE%B0/</guid>
+        <guid>https://blog.sophonci117.me/post/noip2018%E6%B8%B8%E8%AE%B0/</guid>
         <description>&lt;h1 id=&#34;出师&#34;&gt;出师&lt;/h1&gt;
 &lt;p&gt;（1）&lt;/p&gt;
 &lt;p&gt;起床看见洛谷首页上显示的“距NOIP2018还有-1天”时，差点把嘴里的一口早饭喷了出来。&lt;/p&gt;
@@ -2214,20 +2214,20 @@ www.google.com.		66	IN	A	216.58.194.196
         </item>
         <item>
         <title>New Start</title>
-        <link>https://example.com/post/new-start/</link>
+        <link>https://blog.sophonci117.me/post/new-start/</link>
         <pubDate>Mon, 04 Mar 2019 09:51:00 +0000</pubDate>
         
-        <guid>https://example.com/post/new-start/</guid>
+        <guid>https://blog.sophonci117.me/post/new-start/</guid>
         <description>&lt;p&gt;折腾一番后终于把之前的文章迁移到GitHub Pages + Hexo的博客上了，之所以选择GitHub是因为这个平台忽然关闭的可能性很小，并且可定制性极强，虽然只能做静态网页，但搭个博客还是绰绰有余的。&lt;/p&gt;
 &lt;p&gt;从另一方面来讲，GitHub的信誉也不错，在服务品质上也比国内的诸多流氓公司强得多。&lt;/p&gt;
 &lt;p&gt;扯了这么多，博客的本质还是发布文章，就看自己能否坚持写下去了。&lt;/p&gt;</description>
         </item>
         <item>
         <title></title>
-        <link>https://example.com/post/</link>
+        <link>https://blog.sophonci117.me/post/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/post/</guid>
+        <guid>https://blog.sophonci117.me/post/</guid>
         <description>&lt;p&gt;title: Telegram折腾记
 abbrlink: 3581552066
 tags:&lt;/p&gt;

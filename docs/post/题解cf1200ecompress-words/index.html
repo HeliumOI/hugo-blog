@@ -8,7 +8,7 @@
 对于 $n$ 个字符串，则应该按照上面的方法依次拼接。
 P.S. 一个优化：因为两个字符串之间的最长公共部分的长度显然不可能大于其中任意一个字符串的长度，所以在一开始拼接时，只需要求出两个字符串中较短的的长度 $l$，将第一个字符串的后 $l$ 个字符拼接到第二个字符串后面，再求 $next[len - 1]$ 的值。'><title>题解「CF1200E」Compress Words</title>
 
-<link rel='canonical' href='https://example.com/post/%E9%A2%98%E8%A7%A3cf1200ecompress-words/'>
+<link rel='canonical' href='https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3cf1200ecompress-words/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='题解「CF1200E」Compress Words'>
 <meta property='og:description' content='题意简述   给定 $n$ 个单词，将这 $n$ 个单词从前往后拼接在一起，若相邻两个单词的后缀和前缀相同则将其重合在一起。
@@ -17,7 +17,7 @@ P.S. 一个优化：因为两个字符串之间的最长公共部分的长度显
 因此，对于字符串 $s1$ 和 $s2$，我们只需要将 $s2$ 拼接在 $s1$ 前面，例如将 sample 与 please 拼接为 pleasesample，再求出这个字符串的 $next[len - 1]$ 等于 $2$，就可以简单地得到公共部分为 ple，再从 $2$ 开始截取 please 的后半部分 ease 拼接到 sample 后面即可。
 对于 $n$ 个字符串，则应该按照上面的方法依次拼接。
 P.S. 一个优化：因为两个字符串之间的最长公共部分的长度显然不可能大于其中任意一个字符串的长度，所以在一开始拼接时，只需要求出两个字符串中较短的的长度 $l$，将第一个字符串的后 $l$ 个字符拼接到第二个字符串后面，再求 $next[len - 1]$ 的值。'>
-<meta property='og:url' content='https://example.com/post/%E9%A2%98%E8%A7%A3cf1200ecompress-words/'>
+<meta property='og:url' content='https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3cf1200ecompress-words/'>
 <meta property='og:site_name' content='Sophonの博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='字符串' /><meta property='article:tag' content='KMP' /><meta property='article:tag' content='题解' /><meta property='article:published_time' content='2021-01-01T23:53:05&#43;00:00'/><meta property='article:modified_time' content='2021-01-01T23:53:05&#43;00:00'/>
 <meta name="twitter:title" content="题解「CF1200E」Compress Words">
@@ -78,7 +78,7 @@ P.S. 一个优化：因为两个字符串之间的最长公共部分的长度显
                 
             </figure>
         
-        <h1 class="site-name"><a href="https://example.com">Sophonの博客</a></h1>
+        <h1 class="site-name"><a href="https://blog.sophonci117.me">Sophonの博客</a></h1>
         <h2 class="site-description">面对我们的骨灰，高尚的人们将洒下热泪</h2>
     </header>
 
@@ -204,7 +204,7 @@ P.S. 一个优化：因为两个字符串之间的最长公共部分的长度显
 
             <main class="main full-width">
     <div id="article-toolbar">
-        <a href="https://example.com" class="back-home">
+        <a href="https://blog.sophonci117.me" class="back-home">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <polyline points="15 6 9 12 15 18" />

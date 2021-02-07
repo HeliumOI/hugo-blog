@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>KMP on Sophonの博客</title>
-    <link>https://example.com/tags/kmp/</link>
+    <link>https://blog.sophonci117.me/tags/kmp/</link>
     <description>Recent content in KMP on Sophonの博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 01 Jan 2021 23:53:05 +0000</lastBuildDate><atom:link href="https://example.com/tags/kmp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Jan 2021 23:53:05 +0000</lastBuildDate><atom:link href="https://blog.sophonci117.me/tags/kmp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>题解「CF1200E」Compress Words</title>
-      <link>https://example.com/post/%E9%A2%98%E8%A7%A3cf1200ecompress-words/</link>
+      <link>https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3cf1200ecompress-words/</link>
       <pubDate>Fri, 01 Jan 2021 23:53:05 +0000</pubDate>
       
-      <guid>https://example.com/post/%E9%A2%98%E8%A7%A3cf1200ecompress-words/</guid>
+      <guid>https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3cf1200ecompress-words/</guid>
       <description>题意简述   给定 $n$ 个单词，将这 $n$ 个单词从前往后拼接在一起，若相邻两个单词的后缀和前缀相同则将其重合在一起。
   如输入 sample please ease in out，sample 与 please 拼接得 samplease，samplease 与 ease 拼接仍得 samplease，最终得 sampleaseinout
   题目分析 题目的关键在于求出两个字符串之间的最长公共部分，即相等的前缀与后缀。这很容易让人联想到 KMP 的 $next$ 数组，它的定义是一个字符串的前缀的最长的相同的前缀与后缀的长度，$next[len - 1]$ 的定义就是这个字符串的最长的相同的前缀与后缀的长度。

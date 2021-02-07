@@ -2,37 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on Sophonの博客</title>
-    <link>https://example.com/page/</link>
+    <link>https://blog.sophonci117.me/page/</link>
     <description>Recent content in Pages on Sophonの博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/page/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Aug 2020 21:42:19 +0000</lastBuildDate><atom:link href="https://blog.sophonci117.me/page/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于</title>
+      <link>https://blog.sophonci117.me/%E5%85%B3%E4%BA%8E/</link>
+      <pubDate>Tue, 04 Aug 2020 21:42:19 +0000</pubDate>
+      
+      <guid>https://blog.sophonci117.me/%E5%85%B3%E4%BA%8E/</guid>
+      <description>About Me 一只蒟蒻OIer
+全zypc最菜OI选手
+曾经换过好几个名字，从一开始的HeliumOI一直到现在的“智子”和Sophon，有时也写作SophonCI
+有人问我邮箱地址sophonci117是什么意思，117被同机房的大佬瞬间识破，是指11月7日，十月革命
+至于CI，机房大佬猜是Communist International（共产国际），我自己都信了
+其实一开始是指Chaos Insurgency
+自以为是一名马克思主义爱好者
+日常使用系统Arch Linux 最近换成了openSUSE
+Telegram在线时间比QQ在线时间长
+社交链接 QQ
+E-Mail
+GitHub
+Telegram
+洛谷
+Bilibili
+经历
+2019.12 CCF CSP-J 一等奖，CSP-S二等奖
+2018.12 NOIP2018普及组一等奖</description>
+    </item>
+    
     <item>
       <title>Archives</title>
-      <link>https://example.com/archives/</link>
+      <link>https://blog.sophonci117.me/archives/</link>
       <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/archives/</guid>
+      <guid>https://blog.sophonci117.me/archives/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>About</title>
-      <link>https://example.com/about/</link>
-      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/about/</guid>
-      <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
-Hugo makes use of a variety of open source projects including:
- https://github.</description>
-    </item>
-    
-    <item>
       <title>Search</title>
-      <link>https://example.com/search/</link>
+      <link>https://blog.sophonci117.me/search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/search/</guid>
+      <guid>https://blog.sophonci117.me/search/</guid>
       <description></description>
     </item>
     

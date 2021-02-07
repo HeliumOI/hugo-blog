@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>游记 on Sophonの博客</title>
-    <link>https://example.com/categories/%E6%B8%B8%E8%AE%B0/</link>
+    <link>https://blog.sophonci117.me/categories/%E6%B8%B8%E8%AE%B0/</link>
     <description>Recent content in 游记 on Sophonの博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 08 Mar 2019 22:39:00 +0000</lastBuildDate><atom:link href="https://example.com/categories/%E6%B8%B8%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 08 Mar 2019 22:39:00 +0000</lastBuildDate><atom:link href="https://blog.sophonci117.me/categories/%E6%B8%B8%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>NOIP2018游记</title>
-      <link>https://example.com/post/noip2018%E6%B8%B8%E8%AE%B0/</link>
+      <link>https://blog.sophonci117.me/post/noip2018%E6%B8%B8%E8%AE%B0/</link>
       <pubDate>Fri, 08 Mar 2019 22:39:00 +0000</pubDate>
       
-      <guid>https://example.com/post/noip2018%E6%B8%B8%E8%AE%B0/</guid>
+      <guid>https://blog.sophonci117.me/post/noip2018%E6%B8%B8%E8%AE%B0/</guid>
       <description>出师 （1）
 起床看见洛谷首页上显示的“距NOIP2018还有-1天”时，差点把嘴里的一口早饭喷了出来。
 不过又想一下，要是一大早看见个“距NOIP2019还有365天”，估计瞬间会感觉压力山大。。。

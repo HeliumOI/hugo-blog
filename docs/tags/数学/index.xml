@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数学 on Sophonの博客</title>
-    <link>https://example.com/tags/%E6%95%B0%E5%AD%A6/</link>
+    <link>https://blog.sophonci117.me/tags/%E6%95%B0%E5%AD%A6/</link>
     <description>Recent content in 数学 on Sophonの博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 14 Feb 2020 17:16:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Feb 2020 17:16:00 +0000</lastBuildDate><atom:link href="https://blog.sophonci117.me/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>题解P3197 [HNOI2008]越狱</title>
-      <link>https://example.com/post/%E9%A2%98%E8%A7%A3p3197-hnoi2008%E8%B6%8A%E7%8B%B1/</link>
+      <link>https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3p3197-hnoi2008%E8%B6%8A%E7%8B%B1/</link>
       <pubDate>Fri, 14 Feb 2020 17:16:00 +0000</pubDate>
       
-      <guid>https://example.com/post/%E9%A2%98%E8%A7%A3p3197-hnoi2008%E8%B6%8A%E7%8B%B1/</guid>
+      <guid>https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3p3197-hnoi2008%E8%B6%8A%E7%8B%B1/</guid>
       <description>思路 这道题可以从反面去考虑，即：先计算出不可能发生越狱的状态总数，并用它减去总状态数即为这道题要求的答案。
 首先，在不失一般性的情况下，不妨设第一个房间里的犯人的宗教信仰为$p$，则第二个房间里的烦人的宗教信仰不能为$p$，因此第二个房间里的犯人的宗教信仰共有$(m - 1)$种可能性。同理，第三个房间里的犯人的宗教信仰也共有$(m - 1)$种可能性……故第二个到第$n$个房间里的烦人的宗教信仰共有$(n - 1)^{(m - 1)}$种可能性。而第一个房间里的犯人的信仰有$n$种可能，故不可能发生越狱的状态总数为 $$n×(n - 1)^{(m - 1)}$$
 那么，总状态数是多少呢？容易求的总状态数为$n^m$，所以题目所求为 $$n^m-n×(n - 1)^{(m - 1)}$$

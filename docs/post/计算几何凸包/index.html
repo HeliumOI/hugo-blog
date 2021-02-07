@@ -4,12 +4,12 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='对于初学计算几何的OIer来说，Graham算法是个不错的凸包算法。Graham算法相比极角排序法来说，更为直观也更容易理解。
 数据定义 class Point { public: double x, y; Point(double x = 0, double y = 0):x(x), y(y) {} Point(Point a, Point b) { //构造从a到b的向量  x = b.x - a.x; y = b.y - a.y; } double dist(const Point&amp;amp; p) const { //计算从自身到点P的距离  return sqrt((x - p.x) * (x - p.x) &#43; (y - p.y) * (y - p.y)); } double operator * (const Point&amp;amp; p) const { //计算向量叉积  return x * p.'><title>计算几何：凸包</title>
 
-<link rel='canonical' href='https://example.com/post/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%87%B8%E5%8C%85/'>
+<link rel='canonical' href='https://blog.sophonci117.me/post/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%87%B8%E5%8C%85/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='计算几何：凸包'>
 <meta property='og:description' content='对于初学计算几何的OIer来说，Graham算法是个不错的凸包算法。Graham算法相比极角排序法来说，更为直观也更容易理解。
 数据定义 class Point { public: double x, y; Point(double x = 0, double y = 0):x(x), y(y) {} Point(Point a, Point b) { //构造从a到b的向量  x = b.x - a.x; y = b.y - a.y; } double dist(const Point&amp;amp; p) const { //计算从自身到点P的距离  return sqrt((x - p.x) * (x - p.x) &#43; (y - p.y) * (y - p.y)); } double operator * (const Point&amp;amp; p) const { //计算向量叉积  return x * p.'>
-<meta property='og:url' content='https://example.com/post/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%87%B8%E5%8C%85/'>
+<meta property='og:url' content='https://blog.sophonci117.me/post/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%87%B8%E5%8C%85/'>
 <meta property='og:site_name' content='Sophonの博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='计算几何' /><meta property='article:published_time' content='2019-04-05T15:33:00&#43;00:00'/><meta property='article:modified_time' content='2019-04-05T15:33:00&#43;00:00'/>
 <meta name="twitter:title" content="计算几何：凸包">
@@ -66,7 +66,7 @@
                 
             </figure>
         
-        <h1 class="site-name"><a href="https://example.com">Sophonの博客</a></h1>
+        <h1 class="site-name"><a href="https://blog.sophonci117.me">Sophonの博客</a></h1>
         <h2 class="site-description">面对我们的骨灰，高尚的人们将洒下热泪</h2>
     </header>
 
@@ -192,7 +192,7 @@
 
             <main class="main full-width">
     <div id="article-toolbar">
-        <a href="https://example.com" class="back-home">
+        <a href="https://blog.sophonci117.me" class="back-home">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <polyline points="15 6 9 12 15 18" />

@@ -8,7 +8,7 @@
 AC代码：
 #include&amp;lt;iostream&amp;gt;using namespace std; const long long MOD = 100003; long long power(long long b, long long p) { if(p == 0) { return 1; } long long ans = power(b, p / 2); ans = ans * ans % MOD; if(p % 2 == 1) { ans = ans * b % MOD; } return ans; } int main() { long long m, n; cin &amp;gt;&amp;gt; m &amp;gt;&amp;gt; n; long long ans = ((power(m, n) - m * power(m - 1, n - 1)) % MOD &#43; MOD) % MOD; cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; endl; return 0; } '><title>题解P3197 [HNOI2008]越狱</title>
 
-<link rel='canonical' href='https://example.com/post/%E9%A2%98%E8%A7%A3p3197-hnoi2008%E8%B6%8A%E7%8B%B1/'>
+<link rel='canonical' href='https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3p3197-hnoi2008%E8%B6%8A%E7%8B%B1/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='题解P3197 [HNOI2008]越狱'>
 <meta property='og:description' content='思路 这道题可以从反面去考虑，即：先计算出不可能发生越狱的状态总数，并用它减去总状态数即为这道题要求的答案。
@@ -17,7 +17,7 @@ AC代码：
 这道题还有一个要注意的地方：$m$最大为$10^8$，因此要用快速幂来计算
 AC代码：
 #include&amp;lt;iostream&amp;gt;using namespace std; const long long MOD = 100003; long long power(long long b, long long p) { if(p == 0) { return 1; } long long ans = power(b, p / 2); ans = ans * ans % MOD; if(p % 2 == 1) { ans = ans * b % MOD; } return ans; } int main() { long long m, n; cin &amp;gt;&amp;gt; m &amp;gt;&amp;gt; n; long long ans = ((power(m, n) - m * power(m - 1, n - 1)) % MOD &#43; MOD) % MOD; cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; endl; return 0; } '>
-<meta property='og:url' content='https://example.com/post/%E9%A2%98%E8%A7%A3p3197-hnoi2008%E8%B6%8A%E7%8B%B1/'>
+<meta property='og:url' content='https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3p3197-hnoi2008%E8%B6%8A%E7%8B%B1/'>
 <meta property='og:site_name' content='Sophonの博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='洛谷' /><meta property='article:tag' content='题解' /><meta property='article:tag' content='数学' /><meta property='article:tag' content='快速幂' /><meta property='article:published_time' content='2020-02-14T17:16:00&#43;00:00'/><meta property='article:modified_time' content='2020-02-14T17:16:00&#43;00:00'/>
 <meta name="twitter:title" content="题解P3197 [HNOI2008]越狱">
@@ -78,7 +78,7 @@ AC代码：
                 
             </figure>
         
-        <h1 class="site-name"><a href="https://example.com">Sophonの博客</a></h1>
+        <h1 class="site-name"><a href="https://blog.sophonci117.me">Sophonの博客</a></h1>
         <h2 class="site-description">面对我们的骨灰，高尚的人们将洒下热泪</h2>
     </header>
 
@@ -204,7 +204,7 @@ AC代码：
 
             <main class="main full-width">
     <div id="article-toolbar">
-        <a href="https://example.com" class="back-home">
+        <a href="https://blog.sophonci117.me" class="back-home">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <polyline points="15 6 9 12 15 18" />

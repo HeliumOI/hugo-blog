@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>计算几何 on Sophonの博客</title>
-    <link>https://example.com/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/</link>
+    <link>https://blog.sophonci117.me/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/</link>
     <description>Recent content in 计算几何 on Sophonの博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 05 Apr 2019 15:33:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Apr 2019 15:33:00 +0000</lastBuildDate><atom:link href="https://blog.sophonci117.me/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>计算几何：凸包</title>
-      <link>https://example.com/post/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%87%B8%E5%8C%85/</link>
+      <link>https://blog.sophonci117.me/post/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%87%B8%E5%8C%85/</link>
       <pubDate>Fri, 05 Apr 2019 15:33:00 +0000</pubDate>
       
-      <guid>https://example.com/post/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%87%B8%E5%8C%85/</guid>
+      <guid>https://blog.sophonci117.me/post/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%87%B8%E5%8C%85/</guid>
       <description>对于初学计算几何的OIer来说，Graham算法是个不错的凸包算法。Graham算法相比极角排序法来说，更为直观也更容易理解。
 数据定义 class Point { public: double x, y; Point(double x = 0, double y = 0):x(x), y(y) {} Point(Point a, Point b) { //构造从a到b的向量  x = b.x - a.x; y = b.y - a.y; } double dist(const Point&amp;amp; p) const { //计算从自身到点P的距离  return sqrt((x - p.x) * (x - p.x) + (y - p.y) * (y - p.y)); } double operator * (const Point&amp;amp; p) const { //计算向量叉积  return x * p.</description>
     </item>

@@ -14,7 +14,7 @@
 上代码，这道题算是一道DP入门题吧。
 #include&amp;lt;stdio.h&amp;gt; const int MAXN = 20 &#43; 5; const int attack[9][2] = {{0, 0}, {1, 2}, {2, 1}, {-1, 2}, {2, -1}, {1, -2}, {-2, 1}, {-1, -2}, {-2, -1}}; long long dist[MAXN][MAXN]; int map[MAXN][MAXN]; int n, m, x, y; void init(void) { for(int i = 0; i &amp;lt; 9; i&#43;&#43;) { if(x &#43; attack[i][0] &amp;lt;= n &amp;amp;&amp;amp; x &#43; attack[i][0] &amp;gt;= 0) { if(y &#43; attack[i][1] &amp;lt;= m &amp;amp;&amp;amp; y &#43; attack[i][1] &amp;gt;= 0) { map[x &#43; attack[i][0]][y &#43; attack[i][1]] = true; } } } } int main() { scanf(&amp;#34;%d%d%d%d&amp;#34;, &amp;amp;n, &amp;amp;m, &amp;amp;x, &amp;amp;y); init(); int k = 1; for(int i = 0; i &amp;lt;= n; i&#43;&#43;) { dist[i][0] = map[i][0] ?'><title>洛谷题解 P1002 【过河卒】</title>
 
-<link rel='canonical' href='https://example.com/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1002-%E8%BF%87%E6%B2%B3%E5%8D%92/'>
+<link rel='canonical' href='https://blog.sophonci117.me/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1002-%E8%BF%87%E6%B2%B3%E5%8D%92/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='洛谷题解 P1002 【过河卒】'>
 <meta property='og:description' content='题目描述 棋盘上$A$点有一个过河卒，需要走到目标$B$点。卒行走的规则：可以向下、或者向右。同时在棋盘上$C$点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。
@@ -29,7 +29,7 @@
 状态转移方程的推导并不复杂，每次判断卒是否能走到这个格子，不可以则为0（显而易见），可以则为下方与左方的值之和。
 上代码，这道题算是一道DP入门题吧。
 #include&amp;lt;stdio.h&amp;gt; const int MAXN = 20 &#43; 5; const int attack[9][2] = {{0, 0}, {1, 2}, {2, 1}, {-1, 2}, {2, -1}, {1, -2}, {-2, 1}, {-1, -2}, {-2, -1}}; long long dist[MAXN][MAXN]; int map[MAXN][MAXN]; int n, m, x, y; void init(void) { for(int i = 0; i &amp;lt; 9; i&#43;&#43;) { if(x &#43; attack[i][0] &amp;lt;= n &amp;amp;&amp;amp; x &#43; attack[i][0] &amp;gt;= 0) { if(y &#43; attack[i][1] &amp;lt;= m &amp;amp;&amp;amp; y &#43; attack[i][1] &amp;gt;= 0) { map[x &#43; attack[i][0]][y &#43; attack[i][1]] = true; } } } } int main() { scanf(&amp;#34;%d%d%d%d&amp;#34;, &amp;amp;n, &amp;amp;m, &amp;amp;x, &amp;amp;y); init(); int k = 1; for(int i = 0; i &amp;lt;= n; i&#43;&#43;) { dist[i][0] = map[i][0] ?'>
-<meta property='og:url' content='https://example.com/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1002-%E8%BF%87%E6%B2%B3%E5%8D%92/'>
+<meta property='og:url' content='https://blog.sophonci117.me/post/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-p1002-%E8%BF%87%E6%B2%B3%E5%8D%92/'>
 <meta property='og:site_name' content='Sophonの博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='洛谷' /><meta property='article:tag' content='DP' /><meta property='article:tag' content='题解' /><meta property='article:published_time' content='2019-04-12T20:34:00&#43;00:00'/><meta property='article:modified_time' content='2019-04-12T20:34:00&#43;00:00'/>
 <meta name="twitter:title" content="洛谷题解 P1002 【过河卒】">
@@ -96,7 +96,7 @@
                 
             </figure>
         
-        <h1 class="site-name"><a href="https://example.com">Sophonの博客</a></h1>
+        <h1 class="site-name"><a href="https://blog.sophonci117.me">Sophonの博客</a></h1>
         <h2 class="site-description">面对我们的骨灰，高尚的人们将洒下热泪</h2>
     </header>
 
@@ -222,7 +222,7 @@
 
             <main class="main full-width">
     <div id="article-toolbar">
-        <a href="https://example.com" class="back-home">
+        <a href="https://blog.sophonci117.me" class="back-home">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <polyline points="15 6 9 12 15 18" />

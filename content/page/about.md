@@ -1,27 +1,44 @@
-+++
-title = "About"
-description = "Hugo, the world's fastest framework for building websites"
-date = "2019-02-28"
-aliases = ["about-us", "about-hugo", "contact"]
-author = "Hugo Authors"
-license = "CC BY-NC-ND"
-lastmod = "2020-10-09"
-+++
+---
+title: 关于
+date: 2020-08-04 21:42:19
+---
 
-Written in Go, Hugo is an open source static site generator available under the [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+## About Me
 
-Hugo makes use of a variety of open source projects including:
+一只蒟蒻OIer
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+全zypc最菜OI选手
 
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
+曾经换过好几个名字，从一开始的HeliumOI一直到现在的“智子”和Sophon，有时也写作SophonCI
 
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
+有人问我邮箱地址sophonci117是什么意思，117被同机房的大佬瞬间识破，是指11月7日，十月革命
 
-Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
+至于CI，机房大佬猜是Communist International（共产国际），~~我自己都信了~~
 
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+~~其实一开始是指Chaos Insurgency~~
+
+自以为是一名马克思主义爱好者
+
+日常使用系统Arch Linux ~~最近换成了openSUSE~~
+
+Telegram在线时间比QQ在线时间长
+
+## 社交链接
+
+[QQ](tencent://Message/?Uin=973178675)
+
+[E-Mail](mailto:sophonci117@gmail.com)
+
+[GitHub](https://github.com/HeliumOI)
+
+[Telegram](https://t.me/SophonCI)
+
+[洛谷](https://www.luogu.com.cn/user/132435)
+
+[Bilibili](https://space.bilibili.com/431327472)
+
+经历
+
+2019.12 CCF CSP-J 一等奖，CSP-S二等奖
+
+2018.12 NOIP2018普及组一等奖

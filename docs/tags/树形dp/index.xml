@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>树形DP on Sophonの博客</title>
-    <link>https://example.com/tags/%E6%A0%91%E5%BD%A2dp/</link>
+    <link>https://blog.sophonci117.me/tags/%E6%A0%91%E5%BD%A2dp/</link>
     <description>Recent content in 树形DP on Sophonの博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 01 Jan 2021 20:01:39 +0000</lastBuildDate><atom:link href="https://example.com/tags/%E6%A0%91%E5%BD%A2dp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Jan 2021 20:01:39 +0000</lastBuildDate><atom:link href="https://blog.sophonci117.me/tags/%E6%A0%91%E5%BD%A2dp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>题解「CF161D」Distance in Tree</title>
-      <link>https://example.com/post/%E9%A2%98%E8%A7%A3cf161ddistance-in-tree/</link>
+      <link>https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3cf161ddistance-in-tree/</link>
       <pubDate>Fri, 01 Jan 2021 20:01:39 +0000</pubDate>
       
-      <guid>https://example.com/post/%E9%A2%98%E8%A7%A3cf161ddistance-in-tree/</guid>
+      <guid>https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3cf161ddistance-in-tree/</guid>
       <description>题意简述 给定一颗$N$个节点的树，求树上长度为$K$的路径的数量
 输入 第一行两个数字$N$，$K$，如题意
 接下来的$N−1$行中，每行两个整数$u,v$表示一条树边$(u,v)$

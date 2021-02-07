@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>网络安全 on Sophonの博客</title>
-    <link>https://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</link>
+    <link>https://blog.sophonci117.me/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</link>
     <description>Recent content in 网络安全 on Sophonの博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 15 Apr 2019 21:45:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Apr 2019 21:45:00 +0000</lastBuildDate><atom:link href="https://blog.sophonci117.me/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DNS-over-HTTPS(DoH)简析与配置</title>
-      <link>https://example.com/post/dns-over-httpsdoh%E7%AE%80%E6%9E%90%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <link>https://blog.sophonci117.me/post/dns-over-httpsdoh%E7%AE%80%E6%9E%90%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 15 Apr 2019 21:45:00 +0000</pubDate>
       
-      <guid>https://example.com/post/dns-over-httpsdoh%E7%AE%80%E6%9E%90%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://blog.sophonci117.me/post/dns-over-httpsdoh%E7%AE%80%E6%9E%90%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
       <description>本文同步发布于 Heliumの博客，到我的博客阅读体验更佳QwQ
 DNS是什么 DNS（Domain Name System）是一项网络服务，用途是对全球各个网站的域名进行解析。如果听不懂上面这句话也没关系，接下来会讲解。如果你是网络方面的大牛可以直接跳过或关闭此网页。
 简明易懂的DNS 举个例子，从前有个叫小明的人（目测此人已累死），开了一家商店。一开始顾客要去购物时,就直接去商店里买。

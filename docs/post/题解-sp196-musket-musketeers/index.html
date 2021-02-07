@@ -15,7 +15,7 @@ $$dp_{i,j} = dp_{i,k} &amp;amp;&amp;amp;\ dp_{k,j} &amp;amp;&amp;amp;\ (w_{i,k} 
 边界条件 显然， 若两人本来就相邻，则$dp_{i,j} = 1$
 代码 #include&amp;lt;iostream&amp;gt;#include&amp;lt;cstring&amp;gt;using namespace std; const int MAXN = 100 * 2 &#43; 5; int w[MAXN][MAXN], f[MAXN][MAXN]; int n; int main() { int t; cin &amp;gt;&amp;gt; t; while(t--) { memset(f, 0, sizeof(f)); //数组清零，我在这里掉了两次坑  memset(w, 0, sizeof(w)); cin &amp;gt;&amp;gt; n; for(int i = 1; i &amp;lt;= n; i&#43;&#43;) { for(int j = 1; j &amp;lt;= n; j&#43;&#43;) { char c; cin &amp;gt;&amp;gt; c; w[i][j] = c - &amp;#39;0&amp;#39;; w[i &#43; n][j &#43; n] = w[i &#43; n][j] = w[i][j &#43; n] = w[i][j]; } } for(int l = 1; l &amp;lt;= n &#43; 1; l&#43;&#43;) { for(int i = 1; i &#43; l - 1 &amp;lt;= n * 2; i&#43;&#43;) { int j = i &#43; l - 1; if(l &amp;lt;= 2) { f[i][j] = 1; //边界条件  continue; } for(int k = i; k &amp;lt;= j; k&#43;&#43;) { if(f[i][k] &amp;amp;&amp;amp; f[k][j] &amp;amp;&amp;amp; (w[i][k] || w[j][k])) { f[i][j] = 1; break; } } } } int ans = 0; for(int i = 1; i &amp;lt;= n; i&#43;&#43;) { if(f[i][i &#43; n]) { ans&#43;&#43;; } } cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; endl; for(int i = 1; i &amp;lt;= n; i&#43;&#43;) { if(f[i][i &#43; n]) { cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; endl; } } } return 0; } '><title>题解 SP196 【MUSKET - Musketeers】</title>
 
-<link rel='canonical' href='https://example.com/post/%E9%A2%98%E8%A7%A3-sp196-musket-musketeers/'>
+<link rel='canonical' href='https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3-sp196-musket-musketeers/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='题解 SP196 【MUSKET - Musketeers】'>
 <meta property='og:description' content='在模拟赛中遇到了这道题。（后来才知道是SPOJ上的原题）
@@ -31,7 +31,7 @@ $dp_{i,j}$为第$i$人与第$j$人是否能够相遇
 $$dp_{i,j} = dp_{i,k} &amp;amp;&amp;amp;\ dp_{k,j} &amp;amp;&amp;amp;\ (w_{i,k} || w_{j,k})$$
 边界条件 显然， 若两人本来就相邻，则$dp_{i,j} = 1$
 代码 #include&amp;lt;iostream&amp;gt;#include&amp;lt;cstring&amp;gt;using namespace std; const int MAXN = 100 * 2 &#43; 5; int w[MAXN][MAXN], f[MAXN][MAXN]; int n; int main() { int t; cin &amp;gt;&amp;gt; t; while(t--) { memset(f, 0, sizeof(f)); //数组清零，我在这里掉了两次坑  memset(w, 0, sizeof(w)); cin &amp;gt;&amp;gt; n; for(int i = 1; i &amp;lt;= n; i&#43;&#43;) { for(int j = 1; j &amp;lt;= n; j&#43;&#43;) { char c; cin &amp;gt;&amp;gt; c; w[i][j] = c - &amp;#39;0&amp;#39;; w[i &#43; n][j &#43; n] = w[i &#43; n][j] = w[i][j &#43; n] = w[i][j]; } } for(int l = 1; l &amp;lt;= n &#43; 1; l&#43;&#43;) { for(int i = 1; i &#43; l - 1 &amp;lt;= n * 2; i&#43;&#43;) { int j = i &#43; l - 1; if(l &amp;lt;= 2) { f[i][j] = 1; //边界条件  continue; } for(int k = i; k &amp;lt;= j; k&#43;&#43;) { if(f[i][k] &amp;amp;&amp;amp; f[k][j] &amp;amp;&amp;amp; (w[i][k] || w[j][k])) { f[i][j] = 1; break; } } } } int ans = 0; for(int i = 1; i &amp;lt;= n; i&#43;&#43;) { if(f[i][i &#43; n]) { ans&#43;&#43;; } } cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; endl; for(int i = 1; i &amp;lt;= n; i&#43;&#43;) { if(f[i][i &#43; n]) { cout &amp;lt;&amp;lt; i &amp;lt;&amp;lt; endl; } } } return 0; } '>
-<meta property='og:url' content='https://example.com/post/%E9%A2%98%E8%A7%A3-sp196-musket-musketeers/'>
+<meta property='og:url' content='https://blog.sophonci117.me/post/%E9%A2%98%E8%A7%A3-sp196-musket-musketeers/'>
 <meta property='og:site_name' content='Sophonの博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='SPOJ' /><meta property='article:tag' content='题解' /><meta property='article:tag' content='区间DP' /><meta property='article:published_time' content='2019-07-29T11:42:00&#43;00:00'/><meta property='article:modified_time' content='2019-07-29T11:42:00&#43;00:00'/>
 <meta name="twitter:title" content="题解 SP196 【MUSKET - Musketeers】">
@@ -99,7 +99,7 @@ $$dp_{i,j} = dp_{i,k} &amp;amp;&amp;amp;\ dp_{k,j} &amp;amp;&amp;amp;\ (w_{i,k} 
                 
             </figure>
         
-        <h1 class="site-name"><a href="https://example.com">Sophonの博客</a></h1>
+        <h1 class="site-name"><a href="https://blog.sophonci117.me">Sophonの博客</a></h1>
         <h2 class="site-description">面对我们的骨灰，高尚的人们将洒下热泪</h2>
     </header>
 
@@ -225,7 +225,7 @@ $$dp_{i,j} = dp_{i,k} &amp;amp;&amp;amp;\ dp_{k,j} &amp;amp;&amp;amp;\ (w_{i,k} 
 
             <main class="main full-width">
     <div id="article-toolbar">
-        <a href="https://example.com" class="back-home">
+        <a href="https://blog.sophonci117.me" class="back-home">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <polyline points="15 6 9 12 15 18" />
