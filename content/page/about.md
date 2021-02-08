@@ -1,6 +1,8 @@
 ---
 title: 关于
 date: 2020-08-04 21:42:19
+layout: "about"
+slug: "about"
 ---
 
 ## About Me
